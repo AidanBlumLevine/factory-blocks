@@ -1,0 +1,322 @@
+{
+    "stars": [
+        0,
+        0,
+        0
+    ],
+    "width": 6,
+    "height": 6,
+    "name": "level1.json",
+    "tiles": [
+        {
+            "type": 1,
+            "tileID": 164,
+            "pos": {
+                "x": 0,
+                "y": 0
+            },
+            "isMaster": true,
+            "masterID": -1,
+            "slavesIDs": []
+        },
+        {
+            "type": 1,
+            "tileID": 165,
+            "pos": {
+                "x": 1,
+                "y": 0
+            },
+            "isMaster": true,
+            "masterID": -1,
+            "slavesIDs": []
+        },
+        {
+            "type": 1,
+            "tileID": 166,
+            "pos": {
+                "x": 2,
+                "y": 0
+            },
+            "isMaster": true,
+            "masterID": -1,
+            "slavesIDs": []
+        },
+        {
+            "type": 1,
+            "tileID": 167,
+            "pos": {
+                "x": 3,
+                "y": 0
+            },
+            "isMaster": true,
+            "masterID": -1,
+            "slavesIDs": []
+        },
+        {
+            "type": 1,
+            "tileID": 168,
+            "pos": {
+                "x": 4,
+                "y": 0
+            },
+            "isMaster": true,
+            "masterID": -1,
+            "slavesIDs": []
+        },
+        {
+            "type": 1,
+            "tileID": 169,
+            "pos": {
+                "x": 5,
+                "y": 0
+            },
+            "isMaster": true,
+            "masterID": -1,
+            "slavesIDs": []
+        },
+        {
+            "type": 1,
+            "tileID": 170,
+            "pos": {
+                "x": 0,
+                "y": 1
+            },
+            "isMaster": true,
+            "masterID": -1,
+            "slavesIDs": []
+        },
+        {
+            "type": 1,
+            "tileID": 171,
+            "pos": {
+                "x": 0,
+                "y": 2
+            },
+            "isMaster": true,
+            "masterID": -1,
+            "slavesIDs": []
+        },
+        {
+            "type": 1,
+            "tileID": 172,
+            "pos": {
+                "x": 0,
+                "y": 3
+            },
+            "isMaster": true,
+            "masterID": -1,
+            "slavesIDs": []
+        },
+        {
+            "type": 1,
+            "tileID": 173,
+            "pos": {
+                "x": 0,
+                "y": 4
+            },
+            "isMaster": true,
+            "masterID": -1,
+            "slavesIDs": []
+        },
+        {
+            "type": 1,
+            "tileID": 174,
+            "pos": {
+                "x": 0,
+                "y": 5
+            },
+            "isMaster": true,
+            "masterID": -1,
+            "slavesIDs": []
+        },
+        {
+            "type": 1,
+            "tileID": 175,
+            "pos": {
+                "x": 1,
+                "y": 5
+            },
+            "isMaster": true,
+            "masterID": -1,
+            "slavesIDs": []
+        },
+        {
+            "type": 1,
+            "tileID": 176,
+            "pos": {
+                "x": 2,
+                "y": 5
+            },
+            "isMaster": true,
+            "masterID": -1,
+            "slavesIDs": []
+        },
+        {
+            "type": 1,
+            "tileID": 177,
+            "pos": {
+                "x": 3,
+                "y": 5
+            },
+            "isMaster": true,
+            "masterID": -1,
+            "slavesIDs": []
+        },
+        {
+            "type": 1,
+            "tileID": 178,
+            "pos": {
+                "x": 4,
+                "y": 5
+            },
+            "isMaster": true,
+            "masterID": -1,
+            "slavesIDs": []
+        },
+        {
+            "type": 1,
+            "tileID": 179,
+            "pos": {
+                "x": 5,
+                "y": 5
+            },
+            "isMaster": true,
+            "masterID": -1,
+            "slavesIDs": []
+        },
+        {
+            "type": 1,
+            "tileID": 180,
+            "pos": {
+                "x": 5,
+                "y": 1
+            },
+            "isMaster": true,
+            "masterID": -1,
+            "slavesIDs": []
+        },
+        {
+            "type": 1,
+            "tileID": 181,
+            "pos": {
+                "x": 5,
+                "y": 2
+            },
+            "isMaster": true,
+            "masterID": -1,
+            "slavesIDs": []
+        },
+        {
+            "type": 1,
+            "tileID": 182,
+            "pos": {
+                "x": 5,
+                "y": 3
+            },
+            "isMaster": true,
+            "masterID": -1,
+            "slavesIDs": []
+        },
+        {
+            "type": 1,
+            "tileID": 183,
+            "pos": {
+                "x": 5,
+                "y": 4
+            },
+            "isMaster": true,
+            "masterID": -1,
+            "slavesIDs": []
+        },
+        {
+            "type": 0,
+            "tileID": 184,
+            "pos": {
+                "x": 3,
+                "y": 1
+            },
+            "isMaster": true,
+            "masterID": -1,
+            "slavesIDs": []
+        },
+        {
+            "type": 0,
+            "tileID": 185,
+            "pos": {
+                "x": 2,
+                "y": 2
+            },
+            "isMaster": true,
+            "masterID": -1,
+            "slavesIDs": []
+        },
+        {
+            "type": 1,
+            "tileID": 186,
+            "pos": {
+                "x": 3,
+                "y": 2
+            },
+            "isMaster": true,
+            "masterID": -1,
+            "slavesIDs": []
+        },
+        {
+            "type": 1,
+            "tileID": 187,
+            "pos": {
+                "x": 3,
+                "y": 3
+            },
+            "isMaster": true,
+            "masterID": -1,
+            "slavesIDs": []
+        },
+        {
+            "type": 1,
+            "tileID": 188,
+            "pos": {
+                "x": 3,
+                "y": 4
+            },
+            "isMaster": true,
+            "masterID": -1,
+            "slavesIDs": []
+        },
+        {
+            "type": 2,
+            "tileID": 190,
+            "pos": {
+                "x": 4,
+                "y": 4
+            },
+            "isMaster": true,
+            "masterID": -1,
+            "slavesIDs": []
+        },
+        {
+            "type": 3,
+            "tileID": 191,
+            "pos": {
+                "x": 1,
+                "y": 4
+            },
+            "isMaster": true,
+            "masterID": -1,
+            "slavesIDs": [
+                192
+            ]
+        },
+        {
+            "type": 3,
+            "tileID": 192,
+            "pos": {
+                "x": 2,
+                "y": 4
+            },
+            "isMaster": false,
+            "masterID": 191,
+            "slavesIDs": []
+        }
+    ]
+}

@@ -28,19 +28,19 @@ public class InputManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.A))
         {
-            tm.Slide(new Vector2(-1,0));
+            tm.Slide(new Vector2Int(-1, 0));
         }
         else if (Input.GetKeyDown(KeyCode.W))
         {
-            tm.Slide(new Vector2(0, 1));
+            tm.Slide(new Vector2Int(0, 1));
         }
         else if (Input.GetKeyDown(KeyCode.D))
         {
-            tm.Slide(new Vector2(1, 0));
+            tm.Slide(new Vector2Int(1, 0));
         }
         else if (Input.GetKeyDown(KeyCode.S))
         {
-            tm.Slide(new Vector2(0, -1));
+            tm.Slide(new Vector2Int(0, -1));
         }
     }
 }

@@ -1,114 +1,90 @@
-﻿using System;
+﻿using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using UnityEngine;
 
 public class Tile : MonoBehaviour
 {
+    static int nextID = 0;
+    static List<CompiledSprite> spriteCache = new List<CompiledSprite>();
+    static List<Tile> globalLinkGroup = new List<Tile>();
+    struct CompiledSprite
+    {
+        public string situation; //8 binary digets and then tile type
+        public Sprite sprite;
+    }
+
     public Texture2D texture;
-    public bool connectToClones = false, kinetic = true;
+    public bool globalGroup = false, kinetic = true, rotateMid = false;
     public int type;
+    float startingMoveSpeed = 10, acceleration = 50;
+    public int[] ignoredCollisionTypes = new int[] { 4 };
+
+    public Vector2Int pos { get; private set; }
+    public int ID { get; private set; }
 
     TileManager tm;
     SpriteRenderer sr;
 
-    static int nextID = 0;
-    public int ID { get; private set; }
     Sprite[] sprites;
-    Vector2 visualPos;
-    public Vector2 pos { get; private set; }
     bool isMaster = true;
     Tile master;
     List<Tile> slaves = new List<Tile>();
     float moveSpeed = 0;
+    bool merging = false; //only one merge at once
+    bool flipX = false;
+    bool flipY = false;
 
-    List<Tile> dependants = new List<Tile>(); //temporary for moving
 
     void Awake()
     {
         ID = nextID;
         nextID++;
-        sprites = Resources.LoadAll<Sprite>("Sprites/"+texture.name);
+        sprites = Resources.LoadAll<Sprite>("Sprites/" + texture.name);
         sr = GetComponent<SpriteRenderer>();
         tm = TileManager.Instance;
+        if (rotateMid)
+        {
+            flipX = Random.value > .5;
+            flipY = Random.value > .5;
+        }
+        if (globalGroup)
+        {
+            globalLinkGroup.Add(this);
+        }
     }
+
 
     void Update()
     {
-        visualPos = Vector2.MoveTowards(visualPos, pos, Time.deltaTime * moveSpeed);
-        transform.position = visualPos;
-        moveSpeed += Time.deltaTime * 50;
+        if ((Vector2)transform.position != pos)
+        {
+            transform.position = Vector2.MoveTowards(transform.position, pos, Time.deltaTime * moveSpeed);
+            moveSpeed += Time.deltaTime * acceleration;
+        }
+        if(type == 4)
+        {
+            if(master == null)
+            {
+                tm.RemoveTile(this);
+            }
+            //SPIKE
+        }
     }
 
-    public void Set(int ID, Vector2 pos,bool isMaster)
+    public void Set(int ID, Vector2Int pos,bool isMaster)
     {
         this.ID = ID;
         this.pos = pos;
-        visualPos = pos;
-        transform.position = pos;
+        transform.position = new Vector2(pos.x,pos.y);
         this.isMaster = isMaster;
     }
 
-    public void SetSprite() 
+    public void Delete()
     {
-        if (isMaster)
-        {
-            if (connectToClones)
-            {
-                Tile[] neighbors = tm.GetNeighbors(pos);
-                sr.sprite = GetSprite(neighbors[0] != null && neighbors[0].type == type,
-                    neighbors[1] != null && neighbors[1].type == type,
-                    neighbors[2] != null && neighbors[2].type == type,
-                    neighbors[3] != null && neighbors[3].type == type);
-            }
-            else
-            {
-                SetLinkedSprite(slaves);
-                foreach(Tile s in slaves)
-                {
-                    List<Tile> wholeLink = new List<Tile>(slaves);
-                    wholeLink.Add(this);
-                    s.SetLinkedSprite(wholeLink);
-                }
-            }       
-        }
-    }
-
-    public void SetLinkedSprite(List<Tile> linked)
-    {
-        bool left = linked.Where(element => element.pos + new Vector2(1,0) == pos).Count() == 1;
-        bool up = linked.Where(element => element.pos + new Vector2(0, -1) == pos).Count() == 1;
-        bool right = linked.Where(element => element.pos + new Vector2(-1, 0) == pos).Count() == 1;
-        bool down = linked.Where(element => element.pos + new Vector2(0, 1) == pos).Count() == 1;
-        sr.sprite = GetSprite(left,up,right,down);
-    }
-
-    Sprite GetSprite(bool cL, bool cU, bool cR, bool cD)
-    {
-        int count = (cL ? 1 : 0) + (cR ? 1 : 0) + (cU ? 1 : 0) + (cD ? 1 : 0); // the number of connected sides
-
-        if (count >= 3) { return sprites[0]; }
-
-        if(count == 2)
-        {
-            if (cU && cR) { return sprites[1]; }
-            if (cR && cD) { return sprites[2]; }
-            if (cD && cL) { return sprites[3]; }
-            if (cL && cU) { return sprites[4]; }
-
-            if ((cU && cD) || (cL && cR)){
-                return sprites[0];
-            }
-        }
-
-        if (count == 1)
-        {
-            if (cU) { return sprites[5]; }
-            if (cR) { return sprites[6]; }
-            if (cD) { return sprites[7]; }
-            if (cL) { return sprites[8]; }
-        }
-        return sprites[9]; // count must be 0
+        tm.RemoveMap(pos, this);
+        Destroy(gameObject);
     }
 
     public void AddSlave(Tile t)
@@ -118,7 +94,34 @@ public class Tile : MonoBehaviour
 
     public void SetMaster(Tile t)
     {
-        master = t;
+        if(t == null)
+        {
+            if (!isMaster) {
+                master.SetMaster(null);
+            }
+            else
+            {
+                foreach(Tile s in slaves)
+                {
+                    s.WipeMaster();
+                }
+                slaves.Clear();
+            }
+        }
+        else
+        {
+            isMaster = false;
+            master = t;
+            if(type == 4)
+            {
+                SetSprite();
+            }
+        }
+    }
+
+    public void WipeMaster() {//called by the master on the slaves
+        master = null;
+        isMaster = true;
     }
 
     public Level.block BlockData()
@@ -137,94 +140,248 @@ public class Tile : MonoBehaviour
         return b;
     }
 
-    public void Collision(Vector2 hitDir)
+    public void Collision(Vector2Int hitDir)
     {
         //TODO
     }
 
-    public void InformBlockades(Vector2 dir)
+    public void Push(Vector2Int dir)
     {
         if (isMaster && kinetic)
         {
-            Tile d = tm.GetFirstTile(pos, dir);
-            if (!slaves.Contains(d))
+            List<Tile> pushedTiles = GetConnected();
+
+            bool foundMore = true;
+            while (foundMore)
             {
-                d.AddDependant(this);
-            }
-            foreach(Tile t in slaves)
-            {
-                d = tm.GetFirstTile(t.pos, dir);
-                if (!slaves.Contains(d) && d != this)
+                int dist = int.MaxValue;
+                foundMore = false;
+                for (int i = 0; i < pushedTiles.Count; i++)
                 {
-                    d.AddDependant(this);
+                    Tile t = pushedTiles[i];
+                    Tile firstHit = tm.GetFirstTile(t.pos, dir, t.ignoredCollisionTypes, pushedTiles);
+                    int hitDist = Mathf.Abs(t.pos.x - firstHit.pos.x) + Mathf.Abs(t.pos.y - firstHit.pos.y) - 1;
+                    dist = Mathf.Min(hitDist, dist);
+                    //if(GetConnected().Count==6) print("Tile id:" + t.ID + " hit tile:" + firstHit.ID + " at dist:" + dist);
+                    if (firstHit.kinetic && hitDist == 0)
+                    {
+                        pushedTiles.AddRange(firstHit.GetConnected());
+                        foundMore = true;
+                    }
+                }
+                foreach (Tile t in pushedTiles)
+                {
+                    t.Move(dir, dist);
+                }
+                if(dist > 0)
+                {
+                    foundMore = true; //it doesnt add them if they are more than 1 away 
                 }
             }
         }
+        moveSpeed = startingMoveSpeed;
     }
 
-    public void Push(Vector2 dir)
+    List<Tile> GetConnected()
     {
-        if (isMaster && kinetic)
+        if (isMaster)
         {
-            int dist = int.MaxValue;
-
-            if(!slaves.Contains(tm.GetFirstTile(pos, dir)))
-            {
-                dist = Mathf.Min(tm.GetSpace(pos, dir), dist);
-            }
-
-            foreach (Tile t in slaves)
-            {
-                Tile f = tm.GetFirstTile(t.pos, dir);
-                if (!slaves.Contains(f) && f != this)
-                {
-                    dist = Mathf.Min(tm.GetSpace(t.pos, dir), dist);
-                }
-            }
-
-            Move(dir, dist);
-
-            foreach (Tile t in slaves)
-            {
-                t.Move(dir, dist);
-            }
-
+            List<Tile> connected = new List<Tile>(slaves);
+            connected.Add(this);
+            return connected;
+        } else
+        {
+            return master.GetConnected();
         }
     }
 
-    void Move(Vector2 dir, float dist)
+    void Move(Vector2Int dir, int dist)
     {
-        pos += dist * dir;
-        UpdateDependants(dir);
-        ClearDependants();
-        moveSpeed = 10;
-    }
-
-    public void UpdateDependants(Vector2 dir)
-    {
-        foreach (Tile t in dependants)
-        {
-            t.Push(dir);
-        }
-    }
-
-    public void AddDependant(Tile toAdd)
-    {
-        dependants.Add(toAdd);
-    }
-
-    public void ClearDependants()
-    {
-        dependants.Clear();
+        tm.RemoveMap(pos, this);
+        pos += dir * dist;
+        tm.AddMap(pos, this);
     }
 
     public bool IsStill()
     {
-        return pos == visualPos;
+        return pos.x == transform.position.x && pos.y == transform.position.y;
     }
 
-    public void RemoveReferences(Tile t)
+    public void SetSprite()
     {
-        if (slaves.Contains(t)){ slaves.Remove(t); }
+        if (isMaster)
+        {
+            List<Tile> group = null;
+            if (globalGroup)
+            {
+                group = globalLinkGroup;
+            }
+            else
+            {
+                group = new List<Tile>(slaves);
+                group.Add(this);
+            }
+            SetSprite(group);
+            foreach (Tile s in slaves)
+            {
+                s.SetSprite(group);
+            }
+        }
+    }
+
+    public void SetSprite(List<Tile> linked)
+    {
+        if(type == 1)
+        {
+            print(globalLinkGroup.Count);
+        }
+        if(type == 4)
+        {
+            if (master != null) //this could fire before it had a chanceto destroy itself
+            {
+                Vector2 dir = pos - master.pos;
+                sr.sprite = sprites[(int)(Vector2.SignedAngle(Vector2.right, dir) / 90)+ 1];
+            }
+        }
+        else
+        {
+            linked.RemoveAll(item => item == null);
+            bool[] sides = new bool[8];
+            Vector2Int[] dirs = new Vector2Int[] {new Vector2Int(1, -1), new Vector2Int(0, -1), new Vector2Int(-1, -1),
+            new Vector2Int(-1, 0), new Vector2Int(-1, 1), new Vector2Int(0, 1), new Vector2Int(1, 1), new Vector2Int(1, 0) };
+            for (int i = 0; i < 8; i++)
+            {
+                Tile inPos = linked.FirstOrDefault(element => element.pos + dirs[i] == pos);
+                sides[i] = (inPos != null);
+                if (sides[i] && inPos.type == 4 && inPos.master != this)
+                {
+                    sides[i] = false;
+                }
+            }
+            GetSprite(sides);
+        }
+    }
+
+    void GetSprite(bool[] atp) //sets sprite, takes in 8 bools starting top left going clockwise for if there is a mergable tile
+    {
+        string situationName = type + "_";
+        string imgName = "";
+
+        List<int> spritesToMerge = new List<int>();
+        spritesToMerge.Add(12);
+        //directly adjacent
+        if (!atp[1]) { spritesToMerge.Add(7); } else { spritesToMerge.Add(2); }
+        if (!atp[3]) { spritesToMerge.Add(13); } else { spritesToMerge.Add(14); }
+        if (!atp[5]) { spritesToMerge.Add(17); } else { spritesToMerge.Add(22); }
+        if (!atp[7]) { spritesToMerge.Add(11); } else { spritesToMerge.Add(10); }
+        //corners
+        if (atp[7] && atp[1] && !atp[0]) { spritesToMerge.Add(0); }
+        if (atp[7] && !atp[1]) { spritesToMerge.Add(5); }
+        if (!atp[7] && atp[1]) { spritesToMerge.Add(1); }
+        if (!atp[7] && !atp[1]) { spritesToMerge.Add(6); }
+        if (atp[1] && atp[3] && !atp[2]) { spritesToMerge.Add(4); }
+        if (atp[1] && !atp[3]) { spritesToMerge.Add(3); }
+        if (!atp[1] && atp[3]) { spritesToMerge.Add(9); }
+        if (!atp[1] && !atp[3]) { spritesToMerge.Add(8); }
+        if (atp[3] && atp[5] && !atp[4]) { spritesToMerge.Add(24); }
+        if (atp[3] && !atp[5]) { spritesToMerge.Add(19); }
+        if (!atp[3] && atp[5]) { spritesToMerge.Add(23); }
+        if (!atp[3] && !atp[5]) { spritesToMerge.Add(18); }
+        if (atp[5] && atp[7] && !atp[6]) { spritesToMerge.Add(20); }
+        if (atp[5] && !atp[7]) { spritesToMerge.Add(21); }
+        if (!atp[5] && atp[7]) { spritesToMerge.Add(15); }
+        if (!atp[5] && !atp[7]) { spritesToMerge.Add(16); }
+        //Full Corners
+        if (atp[7] && atp[1] && atp[0]) { spritesToMerge.Add(25); }
+        if (atp[1] && atp[3] && atp[2]) { spritesToMerge.Add(26); }
+        if (atp[3] && atp[5] && atp[4]) { spritesToMerge.Add(27); }
+        if (atp[5] && atp[7] && atp[6]) { spritesToMerge.Add(28); }
+
+        foreach (int b in spritesToMerge) { situationName += b+","; imgName += b + "-"; }
+
+        CompiledSprite fetched = spriteCache.FirstOrDefault(element => element.situation.Equals(situationName));
+        if (fetched.sprite != null)
+        {
+            sr.sprite = fetched.sprite;
+        }
+        else if(Loader.Instance.FetchTexture(type,imgName) != null)
+        {
+            Texture2D tex = Loader.Instance.FetchTexture(type, imgName);
+            sr.sprite = Sprite.Create(tex, new Rect(0, 0, tex.width, tex.height), new Vector2(.5f, .5f), tex.width);
+            spriteCache.Add(new CompiledSprite
+            {
+                situation = situationName,
+                sprite = sr.sprite
+            });
+        }
+        else
+        {
+            if (!merging)
+            {
+                StartCoroutine(MergeSprites(spritesToMerge, situationName,imgName));
+            }
+        }
+    }
+
+    //TODO it saves the old merge not the new one so spamming will leave you with out of date sprites
+    IEnumerator MergeSprites(List<int> spriteIndexes,string situationName,string imgName)
+    {
+        merging = true;
+
+        Texture2D tex = new Texture2D((int)sprites[0].rect.width, (int)sprites[0].rect.height,TextureFormat.ARGB32,false);
+        tex.filterMode = FilterMode.Point;
+        Color32[] pixels = new Color32[tex.width * tex.height];
+        bool done = false;
+        foreach (int i in spriteIndexes)
+        {
+            done = false;
+            while (!done)
+            {
+                if (GameManager.Instance.ProcessHeavy(.5f))
+                {
+                    for (int x = 0; x < sprites[i].rect.width; x++)
+                    {
+                        for (int y = 0; y < sprites[i].rect.height; y++)
+                        {
+                            int xpos = flipX&&i==12 ? (int)sprites[i].rect.width - x - 1 + (int)sprites[i].rect.x : x + (int)sprites[i].rect.x;
+                            int ypos = flipY&&i==12 ? (int)sprites[i].rect.height - y - 1 + (int)sprites[i].rect.y : y + (int)sprites[i].rect.y;
+
+                            Color32 pixel = sprites[i].texture.GetPixel(xpos, ypos);
+                            if (pixel.a != 0)
+                            {
+                                pixels[x + tex.width * y] = pixel;
+                            }
+                        }
+                    }
+                    done = true;
+                }
+                yield return null;
+            }
+
+        }
+        done = false;
+        while (!done)
+        {
+            if (GameManager.Instance.ProcessHeavy(1))
+            {
+                tex.SetPixels32(pixels);
+                tex.Apply();
+                done = true;
+            }
+            yield return null;
+        }
+        string path = "tile" + type + "/" + imgName + ".png";
+        if (!File.Exists(path))
+        {
+            File.WriteAllBytes(path, tex.EncodeToPNG());
+        }
+        sr.sprite = Sprite.Create(tex, new Rect(0, 0, tex.width, tex.height), new Vector2(.5f, .5f), tex.width);
+        spriteCache.Add(new CompiledSprite
+        {
+            situation = situationName,
+            sprite = sr.sprite
+        });
+        merging = false;
+
     }
 }

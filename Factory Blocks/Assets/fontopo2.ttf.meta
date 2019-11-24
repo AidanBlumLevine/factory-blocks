@@ -1,0 +1,24 @@
+fileFormatVersion: 2
+guid: 91ea55d41a4421e4aab85b85c12f53bd
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: fontopoFONTOPO
+  fontNames:
+  - fontopoFONTOPO
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 3ad4f7b17dff0a34f9696e905a07c188, type: 3}
+  - {fileID: 12800000, guid: 15e4186f0990a7647a5d8677951b6fc4, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

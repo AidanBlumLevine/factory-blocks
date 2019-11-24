@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.IO;
+using UnityEngine;
 
 public class HomescreenManager : MonoBehaviour
 {
@@ -16,15 +17,21 @@ public class HomescreenManager : MonoBehaviour
     }
 
     GameManager gm;
+    public GameObject levelList,levelPlayPrefab;
 
     void Start()
     {
         gm = GameManager.Instance;
+        
+        foreach (Level l in gm.levels)
+        {
+            Instantiate(levelPlayPrefab, levelList.transform).GetComponent<LevelPreview>().Set(l);
+        }
     }
 
-    public void Play()
+    public void PlayLevel(Level l)
     {
-        gm.LoadScene(1);
+        gm.LoadScene(1, l);
     }
 
     public void Edit()

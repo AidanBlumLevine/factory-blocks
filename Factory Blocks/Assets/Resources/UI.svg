@@ -17,7 +17,18 @@
    sodipodi:docname="UI.svg"
    inkscape:version="0.92.4 (5da689c313, 2019-01-14)">
   <defs
-     id="defs2" />
+     id="defs2">
+    <inkscape:path-effect
+       effect="bspline"
+       id="path-effect897"
+       is_visible="true"
+       weight="33.333333"
+       steps="2"
+       helper_size="0"
+       apply_no_weight="true"
+       apply_with_weight="true"
+       only_selected="false" />
+  </defs>
   <sodipodi:namedview
      id="base"
      pagecolor="#ffffff"
@@ -25,9 +36,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.979899"
-     inkscape:cx="480.00341"
-     inkscape:cy="424.75436"
+     inkscape:zoom="11.313708"
+     inkscape:cx="554.3765"
+     inkscape:cy="785.52896"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -41,7 +52,15 @@
      inkscape:snap-global="false"
      showguides="true"
      inkscape:snap-smooth-nodes="true"
-     inkscape:snap-midpoints="true" />
+     inkscape:snap-midpoints="true"
+     inkscape:snap-bbox-edge-midpoints="true"
+     inkscape:object-nodes="true"
+     inkscape:bbox-nodes="true"
+     inkscape:bbox-paths="true"
+     inkscape:snap-bbox-midpoints="true"
+     inkscape:snap-intersection-paths="true"
+     inkscape:object-paths="true"
+     inkscape:snap-nodes="true" />
   <metadata
      id="metadata5">
     <rdf:RDF>
@@ -61,12 +80,26 @@
        style="fill:#7d7461;fill-opacity:1;stroke:#8d826d;stroke-width:3.77952766;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        d="M 406.14453 520.59766 A 70.681675 70.681675 0 0 0 394.17969 523.85547 L 392.7832 542.5293 C 387.54648 545.34845 382.83441 549.00909 378.8125 553.32422 L 360.26562 550.01367 A 70.681675 70.681675 0 0 0 354.22461 560.74219 L 366.47266 574.9707 C 365.05743 579.80298 364.28513 584.90935 364.28516 590.19922 C 364.28518 590.95357 364.31122 591.70235 364.3418 592.44922 L 348.95703 603.17383 A 70.681675 70.681675 0 0 0 352.29883 615.1582 L 371.14844 616.56836 C 373.96175 621.5977 377.54882 626.13259 381.75781 630.00781 L 378.45508 648.51367 A 70.681675 70.681675 0 0 0 389.58203 654.67773 L 403.92188 642.33203 C 408.52973 643.60842 413.37835 644.30473 418.39258 644.30469 C 419.0258 644.30469 419.65328 644.27822 420.28125 644.25781 L 431.05078 659.70703 A 70.681675 70.681675 0 0 0 443.56055 656.22461 L 444.97461 637.32031 C 449.67215 634.66467 453.92907 631.32653 457.61914 627.44141 L 476.22852 630.76562 A 70.681675 70.681675 0 0 0 482.69727 619.37305 L 470.40625 605.0957 C 471.75993 600.36147 472.49985 595.36814 472.5 590.19922 C 472.5 589.84243 472.48022 589.49 472.47266 589.13477 L 488.05664 578.27344 A 70.681675 70.681675 0 0 0 484.66797 565.77734 L 465.95117 564.37891 C 463.28252 559.47376 459.86852 555.03824 455.875 551.19922 L 459.20508 532.54883 A 70.681675 70.681675 0 0 0 448.21289 526.20508 L 434.04688 538.40039 C 429.09014 536.9043 423.83725 536.0918 418.39258 536.0918 C 417.91519 536.0918 417.44316 536.11366 416.96875 536.125 L 406.14453 520.59766 z M 418.50586 545.28516 A 44.867344 44.867344 0 0 1 449.55859 557.7832 L 432.98633 575.05859 A 20.938774 20.938774 0 0 0 418.50586 569.21289 A 20.938774 20.938774 0 0 0 408.56445 571.74609 L 397.1875 550.68359 A 44.867344 44.867344 0 0 1 418.50586 545.28516 z M 385.88477 559.43359 L 403.46484 575.64258 A 20.938774 20.938774 0 0 0 397.90039 589.81836 A 20.938774 20.938774 0 0 0 400.59961 600.05273 L 379.73047 611.76367 A 44.867345 44.867345 0 0 1 373.97266 589.81836 A 44.867345 44.867345 0 0 1 385.88477 559.43359 z M 458.30859 568.5 A 44.867343 44.867343 0 0 1 463.70703 589.81836 A 44.867343 44.867343 0 0 1 451.20898 620.87109 L 433.93359 604.29883 A 20.938774 20.938774 0 0 0 439.7793 589.81836 A 20.938774 20.938774 0 0 0 437.24609 579.87695 L 458.30859 568.5 z M 418.39258 578.70312 C 424.74143 578.70335 429.88732 583.85033 429.88672 590.19922 C 429.88653 596.5475 424.74086 601.69313 418.39258 601.69336 C 412.04426 601.69313 406.89866 596.5475 406.89844 590.19922 C 406.89787 583.85033 412.04369 578.70335 418.39258 578.70312 z M 404.33008 605.52734 A 20.938774 20.938774 0 0 0 418.50586 611.0918 A 20.938774 20.938774 0 0 0 428.74023 608.39258 L 440.45117 629.26172 A 44.867346 44.867346 0 0 1 418.50586 635.01953 A 44.867346 44.867346 0 0 1 388.12109 623.10742 L 404.33008 605.52734 z "
        transform="scale(0.26458333)"
-       id="path4546" />
+       id="path4546"
+       inkscape:export-filename="C:\Users\Aidan\Desktop\FactoryBlocksRepo\Factory Blocks\Assets\Resources\UI\loadingGear.png"
+       inkscape:export-xdpi="170.52435"
+       inkscape:export-ydpi="170.52435" />
     <path
        style="fill:#afd5aa;fill-opacity:1;stroke:#7d7461;stroke-width:3.77952766;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        d="M 255.57227 321.24805 C 251.38455 321.24805 248.01367 324.61892 248.01367 328.80664 L 248.01367 578.01758 C 248.01367 582.20529 251.38455 585.57617 255.57227 585.57617 L 342.73047 585.57617 A 75.893137 75.893137 0 0 1 418.39258 514.30469 A 75.893137 75.893137 0 0 1 494.12109 585.57617 L 581.21289 585.57617 C 585.40061 585.57617 588.77148 582.20529 588.77148 578.01758 L 588.77148 328.80664 C 588.77148 324.61892 585.40061 321.24805 581.21289 321.24805 L 255.57227 321.24805 z "
-       transform="scale(0.26458333)"
-       id="rect4664" />
+       id="rect4664"
+       inkscape:export-filename="C:\Users\Aidan\Desktop\FactoryBlocksRepo\Factory Blocks\Assets\Resources\UI\loadingTop.png"
+       inkscape:export-xdpi="170.52435"
+       inkscape:export-ydpi="170.52435"
+       transform="scale(0.26458333)" />
+    <path
+       style="color:#000000;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:medium;line-height:normal;font-family:sans-serif;font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-feature-settings:normal;text-indent:0;text-align:start;text-decoration:none;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000000;letter-spacing:normal;word-spacing:normal;text-transform:none;writing-mode:lr-tb;direction:ltr;text-orientation:mixed;dominant-baseline:auto;baseline-shift:baseline;text-anchor:start;white-space:normal;shape-padding:0;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.465;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:3.1118741;stroke-opacity:1;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+       d="m 129.54296,90.216058 c -0.18544,9.61e-4 -0.37139,0.09216 -0.48886,0.259932 -0.18796,0.268433 -0.13253,0.635148 0.1235,0.814422 l 0.29043,0.203086 c 0.23582,0.165127 0.56062,0.113708 0.75757,-0.104902 l -0.13694,-0.09664 h -0.002 c -0.0292,-0.02015 -0.0608,-0.03037 -0.093,-0.03721 -0.10882,0.08644 -0.25598,0.100923 -0.37208,0.01964 l -0.2899,-0.203089 c -0.14371,-0.100629 -0.17316,-0.297874 -0.0677,-0.448551 0.10551,-0.15068 0.30019,-0.189516 0.4439,-0.08888 l 0.28991,0.203089 c 0.0752,0.05263 0.11734,0.131339 0.12712,0.216005 0.0511,0.01676 0.10084,0.0388 0.14728,0.07132 l 0.10129,0.0708 c 0.0424,-0.218345 -0.036,-0.44686 -0.22221,-0.577226 l -0.28991,-0.203086 c -0.096,-0.06723 -0.20706,-0.09928 -0.31832,-0.0987 z m 0.58032,0.767911 c 0.001,0.06796 -0.0137,0.138091 -0.0574,0.200504 -0.0128,0.01826 -0.0303,0.02949 -0.0455,0.04444 0.0289,0.0093 0.0572,0.02125 0.0837,0.03979 l 0.13953,0.09819 c 0.0101,-0.01233 0.0217,-0.02288 0.031,-0.03617 0.0449,-0.06413 0.0753,-0.133819 0.093,-0.205156 l -0.1111,-0.07752 c -0.0418,-0.02925 -0.0871,-0.04861 -0.13333,-0.06408 z"
+       id="path2910"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="C:\Users\Aidan\Desktop\FactoryBlocksRepo\Factory Blocks\Assets\Resources\UI\editoricons1.png"
+       inkscape:export-xdpi="1007.6456"
+       inkscape:export-ydpi="1007.6456" />
     <path
        style="fill:#faebc1;fill-opacity:1;stroke:#9e8d73;stroke-width:3.77952766;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        d="M 255.30469 593.45312 C 251.11697 593.45313 247.74609 596.82596 247.74609 601.01367 L 247.74609 850.22266 C 247.74609 854.41037 251.11697 857.78125 255.30469 857.78125 L 580.94336 857.78125 C 585.13108 857.78125 588.50391 854.41037 588.50391 850.22266 L 588.50391 601.01367 C 588.50391 596.82596 585.13108 593.45312 580.94336 593.45312 L 494.12305 593.45312 A 75.893137 75.893137 0 0 1 418.39258 666.0918 A 75.893137 75.893137 0 0 1 342.61523 593.45312 L 255.30469 593.45312 z "
@@ -84,6 +117,455 @@
        style="fill:#ffcc4d;fill-opacity:1;stroke:#7d7461;stroke-width:3.77952766;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="path4735"
        d="m 255.30469,593.45312 c -4.18772,10e-6 -7.5586,3.37284 -7.5586,7.56055 v 249.20899 c 0,4.18771 3.37088,7.55859 7.5586,7.55859 h 325.63867 c 4.18772,0 7.56055,-3.37088 7.56055,-7.55859 V 601.01367 c 0,-4.18771 -3.37283,-7.56053 -7.56055,-7.56055 h -86.82031 a 75.893137,75.893137 0 0 1 -75.73047,72.63868 75.893137,75.893137 0 0 1 -75.77735,-72.63868 z"
-       transform="scale(0.26458333)" />
+       transform="scale(0.26458333)"
+       inkscape:export-filename="C:\Users\Aidan\Desktop\FactoryBlocksRepo\Factory Blocks\Assets\Resources\UI\loadingBottom.png"
+       inkscape:export-xdpi="170.52435"
+       inkscape:export-ydpi="170.52435" />
+    <rect
+       style="fill:#afd5aa;fill-opacity:1;stroke:#8d826d;stroke-width:1;stroke-linecap:round;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect6332"
+       width="4.8776689"
+       height="4.8776689"
+       x="64.445366"
+       y="41.056007"
+       ry="2.1796746"
+       inkscape:export-filename="C:\Users\Aidan\Desktop\FactoryBlocksRepo\Factory Blocks\Assets\Resources\UI\BasicGreen.png"
+       inkscape:export-xdpi="170.52435"
+       inkscape:export-ydpi="170.52435" />
+    <rect
+       ry="2.1796746"
+       y="48.038425"
+       x="64.612411"
+       height="4.8776689"
+       width="4.8776689"
+       id="rect6334"
+       style="fill:#ffcc4d;fill-opacity:1;stroke:#8d826d;stroke-width:1;stroke-linecap:round;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       inkscape:export-filename="C:\Users\Aidan\Desktop\FactoryBlocksRepo\Factory Blocks\Assets\Resources\UI\BasicYellow.png"
+       inkscape:export-xdpi="170.52435"
+       inkscape:export-ydpi="170.52435" />
+    <rect
+       inkscape:export-ydpi="170.52435"
+       inkscape:export-xdpi="170.52435"
+       inkscape:export-filename="C:\Users\Aidan\Desktop\FactoryBlocksRepo\Factory Blocks\Assets\Resources\UI\BasicWhite.png"
+       style="fill:#ffffff;fill-opacity:1;stroke:#8d826d;stroke-width:1;stroke-linecap:round;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect6336"
+       width="4.8776689"
+       height="4.8776689"
+       x="71.439606"
+       y="47.943932"
+       ry="2.1796746" />
+    <rect
+       inkscape:export-ydpi="170.52435"
+       inkscape:export-xdpi="170.52435"
+       inkscape:export-filename="C:\Users\Aidan\Desktop\FactoryBlocksRepo\Factory Blocks\Assets\Resources\UI\BasicYellow.png"
+       style="fill:#ffcc4d;fill-opacity:1;stroke:#8d826d;stroke-width:1;stroke-linecap:round;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect830"
+       width="34.542709"
+       height="5.6888237"
+       x="110.50053"
+       y="36.218758"
+       ry="2.1796746" />
+    <rect
+       ry="2.1796746"
+       y="54.433163"
+       x="98.671196"
+       height="14.147998"
+       width="20.289591"
+       id="rect840"
+       style="fill:#ffffff;fill-opacity:1;stroke:#8d826d;stroke-width:1;stroke-linecap:round;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       inkscape:export-filename="C:\Users\Aidan\Desktop\FactoryBlocksRepo\Factory Blocks\Assets\Resources\UI\BasicWhite.png"
+       inkscape:export-xdpi="170.52435"
+       inkscape:export-ydpi="170.52435" />
+    <g
+       transform="translate(16.536114,0.02693351)"
+       id="g860"
+       inkscape:export-filename="C:\Users\Aidan\Desktop\FactoryBlocksRepo\Factory Blocks\Assets\Resources\UI\dropNotches.png"
+       inkscape:export-xdpi="192"
+       inkscape:export-ydpi="192">
+      <path
+         style="color:#000000;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:medium;line-height:normal;font-family:sans-serif;font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-feature-settings:normal;text-indent:0;text-align:start;text-decoration:none;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000000;letter-spacing:normal;word-spacing:normal;text-transform:none;writing-mode:lr-tb;direction:ltr;text-orientation:mixed;dominant-baseline:auto;baseline-shift:baseline;text-anchor:start;white-space:normal;shape-padding:0;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#8d826d;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+         d="m 108.02912,65.203817 c -1.4759,0 -2.67994,1.204039 -2.67994,2.679941 v 0.170013 1.000456 h 0.50022 A 0.50005001,0.50005001 0 0 0 106.34963,68.554 v -0.670242 c 0,-0.939179 0.74031,-1.679485 1.67949,-1.679485 h 1.73529 c 0.93917,0 1.67948,0.740306 1.67948,1.679485 V 68.554 a 0.50005001,0.50005001 0 0 0 0.50023,0.500227 h 0.50023 v -1.000456 -0.170013 c 0,-1.475902 -1.20404,-2.679941 -2.67994,-2.679941 z"
+         id="path856"
+         inkscape:connector-curvature="0" />
+      <path
+         inkscape:connector-curvature="0"
+         id="path858"
+         d="m 105.8494,69.054227 c 0.27631,9.9e-5 0.50033,-0.223918 0.50023,-0.500227 v -0.670242 c 0,-0.939179 0.74031,-1.679485 1.67949,-1.679485 h 1.73529 c 0.93917,0 1.67948,0.740306 1.67948,1.679485 V 68.554 c -10e-5,0.276309 0.22392,0.500326 0.50023,0.500227 z"
+         style="color:#000000;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:medium;line-height:normal;font-family:sans-serif;font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-feature-settings:normal;text-indent:0;text-align:start;text-decoration:none;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000000;letter-spacing:normal;word-spacing:normal;text-transform:none;writing-mode:lr-tb;direction:ltr;text-orientation:mixed;dominant-baseline:auto;baseline-shift:baseline;text-anchor:start;white-space:normal;shape-padding:0;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+         sodipodi:nodetypes="ccssssccc" />
+    </g>
+    <g
+       id="g1077"
+       inkscape:export-filename="C:\Users\Aidan\Desktop\FactoryBlocksRepo\Factory Blocks\Assets\Resources\UI\dropNotches.png"
+       inkscape:export-xdpi="192"
+       inkscape:export-ydpi="192"
+       transform="translate(-0.51450034)">
+      <path
+         inkscape:connector-curvature="0"
+         id="path873"
+         d="m 130.6247,69.081161 c 0.27631,9.9e-5 0.50033,-0.223918 0.50023,-0.500227 v -0.670242 c 0,-0.939179 0.74031,-1.679485 1.67949,-1.679485 h 1.73529 c 0.93917,0 1.67948,0.740306 1.67948,1.679485 v 0.670242 c -1e-4,0.276309 0.22392,0.500326 0.50023,0.500227 z"
+         style="color:#000000;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:medium;line-height:normal;font-family:sans-serif;font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-feature-settings:normal;text-indent:0;text-align:start;text-decoration:none;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000000;letter-spacing:normal;word-spacing:normal;text-transform:none;writing-mode:lr-tb;direction:ltr;text-orientation:mixed;dominant-baseline:auto;baseline-shift:baseline;text-anchor:start;white-space:normal;shape-padding:0;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#f7c13b;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+         sodipodi:nodetypes="ccssssccc" />
+      <path
+         sodipodi:nodetypes="csssscc"
+         style="color:#000000;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:medium;line-height:normal;font-family:sans-serif;font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-feature-settings:normal;text-indent:0;text-align:start;text-decoration:none;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000000;letter-spacing:normal;word-spacing:normal;text-transform:none;writing-mode:lr-tb;direction:ltr;text-orientation:mixed;dominant-baseline:auto;baseline-shift:baseline;text-anchor:start;white-space:normal;shape-padding:0;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#ffcc4d;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+         d="m 131.12493,68.580934 v -0.670242 c 0,-0.939179 0.74031,-1.679485 1.67949,-1.679485 h 1.73529 c 0.93917,0 1.67948,0.740306 1.67948,1.679485 v 0.670242 z"
+         id="path875"
+         inkscape:connector-curvature="0" />
+      <path
+         style="color:#000000;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:medium;line-height:normal;font-family:sans-serif;font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-feature-settings:normal;text-indent:0;text-align:start;text-decoration:none;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000000;letter-spacing:normal;word-spacing:normal;text-transform:none;writing-mode:lr-tb;direction:ltr;text-orientation:mixed;dominant-baseline:auto;baseline-shift:baseline;text-anchor:start;white-space:normal;shape-padding:0;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#8d826d;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+         d="m 132.80442,65.230751 c -1.4759,0 -2.67994,1.204039 -2.67994,2.679941 v 0.170013 1.000456 h 0.50022 a 0.50005001,0.50005001 0 0 0 0.50023,-0.500227 v -0.670242 c 0,-0.939179 0.74031,-1.679485 1.67949,-1.679485 h 1.73529 c 0.93917,0 1.67948,0.740306 1.67948,1.679485 v 0.670242 a 0.50005001,0.50005001 0 0 0 0.50023,0.500227 h 0.50023 v -1.000456 -0.170013 c 0,-1.475902 -1.20404,-2.679941 -2.67994,-2.679941 z"
+         id="path871"
+         inkscape:connector-curvature="0" />
+    </g>
+    <path
+       id="rect888"
+       style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.99999994;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 108.06746,71.873957 1.17069,-1.170677 c 0.0904,-0.09041 0.23596,-0.09041 0.32637,-2e-6 0.0904,0.09041 0.0904,0.235965 0,0.32637 l -1.17068,1.170678 c -0.0904,0.0904 -0.23597,0.09041 -0.32638,10e-7 -0.0904,-0.09041 -0.0904,-0.235966 0,-0.32637 z m 1.17069,0.326373 -1.17069,-1.170679 c -0.0904,-0.0904 -0.0904,-0.235966 1e-5,-0.326371 0.0904,-0.0904 0.23597,-0.0904 0.32637,-2e-6 l 1.17069,1.17068 c 0.0904,0.0904 0.0904,0.235966 -1e-5,0.326371 -0.0904,0.09041 -0.23597,0.0904 -0.32637,10e-7 z"
+       inkscape:connector-curvature="0" />
+    <g
+       id="g1045"
+       transform="translate(-18.147601)">
+      <path
+         inkscape:connector-curvature="0"
+         id="rect828"
+         d="m 107.94835,65.230751 c -1.4759,0 -2.67994,1.204039 -2.67994,2.679941 v 0.170013 1.000456 h 0.50022 a 0.50005001,0.50005001 0 0 0 0.50023,-0.500227 v -0.670242 c 0,-0.939179 0.74031,-1.679485 1.67949,-1.679485 h 1.73529 c 0.93917,0 1.67948,0.740306 1.67948,1.679485 v 0.670242 a 0.50005001,0.50005001 0 0 0 0.50023,0.500227 h 0.50023 v -1.000456 -0.170013 c 0,-1.475902 -1.20404,-2.679941 -2.67994,-2.679941 z"
+         style="color:#000000;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:medium;line-height:normal;font-family:sans-serif;font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-feature-settings:normal;text-indent:0;text-align:start;text-decoration:none;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000000;letter-spacing:normal;word-spacing:normal;text-transform:none;writing-mode:lr-tb;direction:ltr;text-orientation:mixed;dominant-baseline:auto;baseline-shift:baseline;text-anchor:start;white-space:normal;shape-padding:0;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#8d826d;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate" />
+      <path
+         sodipodi:nodetypes="ccssssccc"
+         style="color:#000000;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:medium;line-height:normal;font-family:sans-serif;font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-feature-settings:normal;text-indent:0;text-align:start;text-decoration:none;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000000;letter-spacing:normal;word-spacing:normal;text-transform:none;writing-mode:lr-tb;direction:ltr;text-orientation:mixed;dominant-baseline:auto;baseline-shift:baseline;text-anchor:start;white-space:normal;shape-padding:0;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+         d="m 105.76863,69.081161 c 0.27631,9.9e-5 0.50033,-0.223918 0.50023,-0.500227 v -0.670242 c 0,-0.939179 0.74031,-1.679485 1.67949,-1.679485 h 1.73529 c 0.93917,0 1.67948,0.740306 1.67948,1.679485 v 0.670242 c -10e-5,0.276309 0.22392,0.500326 0.50023,0.500227 z"
+         id="path842"
+         inkscape:connector-curvature="0" />
+      <path
+         inkscape:connector-curvature="0"
+         id="path864"
+         d="m 106.26886,68.580934 v -0.670242 c 0,-0.939179 0.74031,-1.679485 1.67949,-1.679485 h 1.73529 c 0.93917,0 1.67948,0.740306 1.67948,1.679485 v 0.670242 z"
+         style="color:#000000;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:medium;line-height:normal;font-family:sans-serif;font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-feature-settings:normal;text-indent:0;text-align:start;text-decoration:none;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000000;letter-spacing:normal;word-spacing:normal;text-transform:none;writing-mode:lr-tb;direction:ltr;text-orientation:mixed;dominant-baseline:auto;baseline-shift:baseline;text-anchor:start;white-space:normal;shape-padding:0;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#ffcc4d;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+         sodipodi:nodetypes="csssscc" />
+      <path
+         inkscape:connector-curvature="0"
+         id="path899"
+         d="m 108.81641,66.560762 -1.15483,1.154823 a 0.31188216,0.31188216 0 1 0 0.44098,0.440976 l 0.71385,-0.713846 0.71384,0.713846 a 0.31188216,0.31188216 0 1 0 0.44098,-0.440976 z"
+         style="color:#000000;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:medium;line-height:normal;font-family:sans-serif;font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-feature-settings:normal;text-indent:0;text-align:start;text-decoration:none;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000000;letter-spacing:normal;word-spacing:normal;text-transform:none;writing-mode:lr-tb;direction:ltr;text-orientation:mixed;dominant-baseline:auto;baseline-shift:baseline;text-anchor:start;white-space:normal;shape-padding:0;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#1a1a1a;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate" />
+    </g>
+    <path
+       inkscape:connector-curvature="0"
+       id="path983"
+       d="m 140.0399,65.230751 c -1.4759,0 -2.67994,1.204039 -2.67994,2.679941 v 0.170013 1.000456 h 0.50022 a 0.50005001,0.50005001 0 0 0 0.50023,-0.500227 v -0.670242 c 0,-0.939179 0.74031,-1.679485 1.67949,-1.679485 h 1.73529 c 0.93917,0 1.67948,0.740306 1.67948,1.679485 v 0.670242 a 0.50005001,0.50005001 0 0 0 0.50023,0.500227 h 0.50023 v -1.000456 -0.170013 c 0,-1.475902 -1.20404,-2.679941 -2.67994,-2.679941 z"
+       style="color:#000000;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:medium;line-height:normal;font-family:sans-serif;font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-feature-settings:normal;text-indent:0;text-align:start;text-decoration:none;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000000;letter-spacing:normal;word-spacing:normal;text-transform:none;writing-mode:lr-tb;direction:ltr;text-orientation:mixed;dominant-baseline:auto;baseline-shift:baseline;text-anchor:start;white-space:normal;shape-padding:0;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#8d826d;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+       inkscape:export-filename="C:\Users\Aidan\Desktop\FactoryBlocksRepo\Factory Blocks\Assets\Resources\UI\dropNotches.png"
+       inkscape:export-xdpi="192"
+       inkscape:export-ydpi="192" />
+    <path
+       sodipodi:nodetypes="ccssssccc"
+       style="color:#000000;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:medium;line-height:normal;font-family:sans-serif;font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-feature-settings:normal;text-indent:0;text-align:start;text-decoration:none;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000000;letter-spacing:normal;word-spacing:normal;text-transform:none;writing-mode:lr-tb;direction:ltr;text-orientation:mixed;dominant-baseline:auto;baseline-shift:baseline;text-anchor:start;white-space:normal;shape-padding:0;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#f7c13b;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+       d="m 137.86018,69.081161 c 0.27631,9.9e-5 0.50033,-0.223918 0.50023,-0.500227 v -0.670242 c 0,-0.939179 0.74031,-1.679485 1.67949,-1.679485 h 1.73529 c 0.93917,0 1.67948,0.740306 1.67948,1.679485 v 0.670242 c -1e-4,0.276309 0.22392,0.500326 0.50023,0.500227 z"
+       id="path985"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="C:\Users\Aidan\Desktop\FactoryBlocksRepo\Factory Blocks\Assets\Resources\UI\dropNotches.png"
+       inkscape:export-xdpi="192"
+       inkscape:export-ydpi="192" />
+    <path
+       inkscape:connector-curvature="0"
+       id="path987"
+       d="m 145.56332,68.580934 v -0.670242 c 0,-0.939179 0.74031,-1.679485 1.67949,-1.679485 h 1.73529 c 0.93917,0 1.67948,0.740306 1.67948,1.679485 v 0.670242 z"
+       style="color:#000000;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:medium;line-height:normal;font-family:sans-serif;font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-feature-settings:normal;text-indent:0;text-align:start;text-decoration:none;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000000;letter-spacing:normal;word-spacing:normal;text-transform:none;writing-mode:lr-tb;direction:ltr;text-orientation:mixed;dominant-baseline:auto;baseline-shift:baseline;text-anchor:start;white-space:normal;shape-padding:0;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#ffcc4d;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+       sodipodi:nodetypes="csssscc"
+       inkscape:export-filename="C:\Users\Aidan\Desktop\FactoryBlocksRepo\Factory Blocks\Assets\Resources\UI\dropNotches.png"
+       inkscape:export-xdpi="192"
+       inkscape:export-ydpi="192" />
+    <path
+       inkscape:connector-curvature="0"
+       id="path989"
+       d="m 151.0809,88.134425 -1.15483,1.154823 a 0.31188216,0.31188216 0 1 0 0.44098,0.440976 l 0.71385,-0.713846 0.71384,0.713846 a 0.31188216,0.31188216 0 1 0 0.44098,-0.440976 z"
+       style="color:#000000;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:medium;line-height:normal;font-family:sans-serif;font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-feature-settings:normal;text-indent:0;text-align:start;text-decoration:none;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000000;letter-spacing:normal;word-spacing:normal;text-transform:none;writing-mode:lr-tb;direction:ltr;text-orientation:mixed;dominant-baseline:auto;baseline-shift:baseline;text-anchor:start;white-space:normal;shape-padding:0;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+       inkscape:export-filename="C:\Users\Aidan\Desktop\FactoryBlocksRepo\Factory Blocks\Assets\Resources\UI\iconSheet1.png"
+       inkscape:export-xdpi="379.89362"
+       inkscape:export-ydpi="379.89362" />
+    <path
+       inkscape:connector-curvature="0"
+       id="path1079"
+       d="m 106.01845,69.081161 c 0.27631,9.9e-5 0.50033,-0.223918 0.50023,-0.500227 v -0.670242 c 0,-0.939179 0.74031,-1.679485 1.67949,-1.679485 h 1.73529 c 0.93917,0 1.67948,0.740306 1.67948,1.679485 v 0.670242 c -10e-5,0.276309 0.22392,0.500326 0.50023,0.500227 z"
+       style="color:#000000;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:medium;line-height:normal;font-family:sans-serif;font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-feature-settings:normal;text-indent:0;text-align:start;text-decoration:none;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000000;letter-spacing:normal;word-spacing:normal;text-transform:none;writing-mode:lr-tb;direction:ltr;text-orientation:mixed;dominant-baseline:auto;baseline-shift:baseline;text-anchor:start;white-space:normal;shape-padding:0;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#f7c13b;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+       sodipodi:nodetypes="ccssssccc" />
+    <path
+       sodipodi:nodetypes="csssscc"
+       style="color:#000000;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:medium;line-height:normal;font-family:sans-serif;font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-feature-settings:normal;text-indent:0;text-align:start;text-decoration:none;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000000;letter-spacing:normal;word-spacing:normal;text-transform:none;writing-mode:lr-tb;direction:ltr;text-orientation:mixed;dominant-baseline:auto;baseline-shift:baseline;text-anchor:start;white-space:normal;shape-padding:0;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#ffcc4d;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+       d="m 106.51868,68.580934 v -0.670242 c 0,-0.939179 0.74031,-1.679485 1.67949,-1.679485 h 1.73529 c 0.93917,0 1.67948,0.740306 1.67948,1.679485 v 0.670242 z"
+       id="path1081"
+       inkscape:connector-curvature="0" />
+    <path
+       style="color:#000000;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:medium;line-height:normal;font-family:sans-serif;font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-feature-settings:normal;text-indent:0;text-align:start;text-decoration:none;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000000;letter-spacing:normal;word-spacing:normal;text-transform:none;writing-mode:lr-tb;direction:ltr;text-orientation:mixed;dominant-baseline:auto;baseline-shift:baseline;text-anchor:start;white-space:normal;shape-padding:0;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#8d826d;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+       d="m 108.19817,65.230751 c -1.4759,0 -2.67994,1.204039 -2.67994,2.679941 v 0.170013 1.000456 h 0.50022 a 0.50005001,0.50005001 0 0 0 0.50023,-0.500227 v -0.670242 c 0,-0.939179 0.74031,-1.679485 1.67949,-1.679485 h 1.73529 c 0.93917,0 1.67948,0.740306 1.67948,1.679485 v 0.670242 a 0.50005001,0.50005001 0 0 0 0.50023,0.500227 h 0.50023 v -1.000456 -0.170013 c 0,-1.475902 -1.20404,-2.679941 -2.67994,-2.679941 z"
+       id="path1083"
+       inkscape:connector-curvature="0" />
+    <path
+       style="color:#000000;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:medium;line-height:normal;font-family:sans-serif;font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-feature-settings:normal;text-indent:0;text-align:start;text-decoration:none;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000000;letter-spacing:normal;word-spacing:normal;text-transform:none;writing-mode:lr-tb;direction:ltr;text-orientation:mixed;dominant-baseline:auto;baseline-shift:baseline;text-anchor:start;white-space:normal;shape-padding:0;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+       d="m 147.18968,87.850432 a 0.25350462,0.25350462 0 0 0 -0.18145,0.436419 l 0.58049,0.58049 -0.58049,0.580073 a 0.25350462,0.25350462 0 1 0 0.35829,0.358712 l 0.58048,-0.580492 0.58008,0.580492 a 0.25350462,0.25350462 0 1 0 0.35829,-0.358712 l -0.58049,-0.580073 0.58049,-0.58049 a 0.25350462,0.25350462 0 1 0 -0.35829,-0.358712 l -0.58008,0.580493 -0.58048,-0.580493 a 0.25350462,0.25350462 0 0 0 -0.17684,-0.0777 z"
+       id="path1106"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="C:\Users\Aidan\Desktop\FactoryBlocksRepo\Factory Blocks\Assets\Resources\UI\iconSheet1.png"
+       inkscape:export-xdpi="379.89362"
+       inkscape:export-ydpi="379.89362" />
+    <path
+       style="color:#000000;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:medium;line-height:normal;font-family:sans-serif;font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-feature-settings:normal;text-indent:0;text-align:start;text-decoration:none;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000000;letter-spacing:normal;word-spacing:normal;text-transform:none;writing-mode:lr-tb;direction:ltr;text-orientation:mixed;dominant-baseline:auto;baseline-shift:baseline;text-anchor:start;white-space:normal;shape-padding:0;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#1a1a1a;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.63;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+       d="m 143.04036,77.267383 c -0.75703,0 -1.37695,0.619918 -1.37695,1.376953 0,0.757035 0.61992,1.376953 1.37695,1.376953 0.75704,0 1.37696,-0.619918 1.37696,-1.376953 0,-0.757035 -0.61992,-1.376953 -1.37696,-1.376953 z m 0,0.628906 c 0.41656,0 0.7461,0.33149 0.7461,0.748047 0,0.416557 -0.32954,0.748047 -0.7461,0.748047 -0.41655,0 -0.74804,-0.33149 -0.74804,-0.748047 0,-0.416557 0.33149,-0.748047 0.74804,-0.748047 z"
+       id="path1111-2"
+       inkscape:connector-curvature="0" />
+    <path
+       inkscape:connector-curvature="0"
+       style="color:#000000;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:medium;line-height:normal;font-family:sans-serif;font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-feature-settings:normal;text-indent:0;text-align:start;text-decoration:none;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000000;letter-spacing:normal;word-spacing:normal;text-transform:none;writing-mode:lr-tb;direction:ltr;text-orientation:mixed;dominant-baseline:auto;baseline-shift:baseline;text-anchor:start;white-space:normal;shape-padding:0;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.63;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+       d="m 144.78657,87.871038 v 0.141765 l -0.002,0.339058 c 0.30245,0.01601 0.53792,0.259769 0.53792,0.566672 0,0.317433 -0.2512,0.570214 -0.56864,0.570214 -0.31743,0 -0.56982,-0.252781 -0.56982,-0.570214 0,-0.173569 0.0769,-0.325916 0.19729,-0.430024 l -0.24022,-0.416636 c -0.26296,0.191203 -0.43632,0.498723 -0.43632,0.84666 0,0.57689 0.47218,1.049465 1.04907,1.049465 0.5769,0 1.04946,-0.472575 1.04946,-1.049465 0,-0.565759 -0.45471,-1.02975 -1.01638,-1.047495 z"
+       id="path1111"
+       inkscape:export-filename="C:\Users\Aidan\Desktop\FactoryBlocksRepo\Factory Blocks\Assets\Resources\UI\iconSheet1.png"
+       inkscape:export-xdpi="379.89362"
+       inkscape:export-ydpi="379.89362" />
+    <path
+       inkscape:export-ydpi="379.89362"
+       inkscape:export-xdpi="379.89362"
+       inkscape:export-filename="C:\Users\Aidan\Desktop\FactoryBlocksRepo\Factory Blocks\Assets\Resources\UI\iconSheet1.png"
+       style="color:#000000;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:medium;line-height:normal;font-family:sans-serif;font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-feature-settings:normal;text-indent:0;text-align:start;text-decoration:none;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000000;letter-spacing:normal;word-spacing:normal;text-transform:none;writing-mode:lr-tb;direction:ltr;text-orientation:mixed;dominant-baseline:auto;baseline-shift:baseline;text-anchor:start;white-space:normal;shape-padding:0;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+       d="m 144.52864,87.949559 -0.87916,0.07692 a 0.16853298,0.16853298 0 1 0 0.0293,0.335718 l 0.54346,-0.04754 0.0476,0.543436 a 0.16853298,0.16853298 0 1 0 0.33572,-0.02937 z"
+       id="path2474"
+       inkscape:connector-curvature="0" />
+    <path
+       inkscape:connector-curvature="0"
+       style="color:#000000;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:medium;line-height:normal;font-family:sans-serif;font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-feature-settings:normal;text-indent:0;text-align:start;text-decoration:none;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000000;letter-spacing:normal;word-spacing:normal;text-transform:none;writing-mode:lr-tb;direction:ltr;text-orientation:mixed;dominant-baseline:auto;baseline-shift:baseline;text-anchor:start;white-space:normal;shape-padding:0;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.63;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+       d="m 140.58939,87.773074 c -0.35034,0 -0.64027,0.292507 -0.64027,0.642855 v 1.286743 c 0,0.350351 0.28993,0.642856 0.64027,0.642856 h 1.28726 c 0.35035,0 0.64234,-0.292505 0.64234,-0.642856 v -1.286743 c 0,-0.0026 -0.001,-0.0051 -0.001,-0.0078 l -0.40101,0.40101 v 0.760677 c 0,0.201237 -0.17187,0.373105 -0.3731,0.373105 h -1.01958 c -0.20124,0 -0.3731,-0.171868 -0.3731,-0.373105 v -1.021125 c 0,-0.201239 0.17186,-0.373104 0.3731,-0.373104 h 0.74776 l 0.40204,-0.402561 z"
+       id="rect2502"
+       inkscape:export-filename="C:\Users\Aidan\Desktop\FactoryBlocksRepo\Factory Blocks\Assets\Resources\UI\iconSheet1.png"
+       inkscape:export-xdpi="379.89362"
+       inkscape:export-ydpi="379.89362" />
+    <rect
+       style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.63;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect2521"
+       width="0.72496861"
+       height="0.43264255"
+       x="-163.19987"
+       y="38.131046"
+       ry="0.12733011"
+       transform="rotate(-135)"
+       inkscape:export-filename="C:\Users\Aidan\Desktop\FactoryBlocksRepo\Factory Blocks\Assets\Resources\UI\iconSheet1.png"
+       inkscape:export-xdpi="379.89362"
+       inkscape:export-ydpi="379.89362" />
+    <rect
+       ry="0.12733011"
+       y="36.605091"
+       x="-163.19987"
+       height="1.4616379"
+       width="0.72497559"
+       id="rect2523"
+       style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.63;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       transform="rotate(-135)"
+       inkscape:export-filename="C:\Users\Aidan\Desktop\FactoryBlocksRepo\Factory Blocks\Assets\Resources\UI\iconSheet1.png"
+       inkscape:export-xdpi="379.89362"
+       inkscape:export-ydpi="379.89362" />
+    <path
+       style="fill:#ffffff;fill-opacity:1;stroke:#ffffff;stroke-width:0.2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 141.0844,89.544354 -0.47059,0.128707 0.12871,-0.470588 0.34188,0.341881"
+       id="path2531"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cccc"
+       inkscape:export-filename="C:\Users\Aidan\Desktop\FactoryBlocksRepo\Factory Blocks\Assets\Resources\UI\iconSheet1.png"
+       inkscape:export-xdpi="379.89362"
+       inkscape:export-ydpi="379.89362" />
+    <rect
+       style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:#ffffff;stroke-width:0.36500001;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect2582"
+       width="0.11504257"
+       height="1.6561824"
+       x="135.98022"
+       y="87.925697"
+       ry="0.01330793"
+       inkscape:export-filename="C:\Users\Aidan\Desktop\FactoryBlocksRepo\Factory Blocks\Assets\Resources\UI\pauseIcon.png"
+       inkscape:export-xdpi="694.1828"
+       inkscape:export-ydpi="694.1828" />
+    <rect
+       ry="0.01330793"
+       y="87.925697"
+       x="136.81743"
+       height="1.6561824"
+       width="0.11504257"
+       id="rect2586"
+       style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:#ffffff;stroke-width:0.36500001;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       inkscape:export-filename="C:\Users\Aidan\Desktop\FactoryBlocksRepo\Factory Blocks\Assets\Resources\UI\pauseIcon.png"
+       inkscape:export-xdpi="694.1828"
+       inkscape:export-ydpi="694.1828" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.56499994;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 138.63498,92.687536 0.73577,-1.154822 0.73576,1.154822 z"
+       id="path2588"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cccc" />
+    <path
+       style="opacity:1;fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:0.16500001;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:0.33000001, 0.33000001;stroke-dashoffset:0.82335001;stroke-opacity:1"
+       d="m 132.60125,87.264756 c -0.34788,0 -0.61908,0.271211 -0.61908,0.619083 v 1.332219 c 0,0.347872 0.2712,0.619083 0.61908,0.619083 h 1.33015 c 0.34787,0 0.61908,-0.271211 0.61908,-0.619083 v -1.332219 c 0,-0.347872 -0.27121,-0.619083 -0.61908,-0.619083 z"
+       id="rect2598"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="C:\Users\Aidan\Desktop\FactoryBlocksRepo\Factory Blocks\Assets\Resources\UI\editoricons1.png"
+       inkscape:export-xdpi="1007.6456"
+       inkscape:export-ydpi="1007.6456" />
+    <path
+       inkscape:connector-curvature="0"
+       id="path2868"
+       d="m 128.99682,87.303513 c -0.34788,0 -0.61908,0.271211 -0.61908,0.619083 v 1.332219 c 0,0.347872 0.2712,0.619083 0.61908,0.619083 h 1.33015 c 0.34787,0 0.61908,-0.271211 0.61908,-0.619083 v -1.332219 c 0,-0.347872 -0.27121,-0.619083 -0.61908,-0.619083 z"
+       style="opacity:1;fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:0.16500001;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:0.33000001, 0.33000001;stroke-dashoffset:0.82335001;stroke-opacity:1"
+       inkscape:export-filename="C:\Users\Aidan\Desktop\FactoryBlocksRepo\Factory Blocks\Assets\Resources\UI\editoricons1.png"
+       inkscape:export-xdpi="1007.6456"
+       inkscape:export-ydpi="1007.6456" />
+    <path
+       inkscape:export-ydpi="1007.6456"
+       inkscape:export-xdpi="1007.6456"
+       inkscape:export-filename="C:\Users\Aidan\Desktop\FactoryBlocksRepo\Factory Blocks\Assets\Resources\UI\editoricons1.png"
+       inkscape:connector-curvature="0"
+       id="path2870"
+       d="m 129.11001,87.847283 a 0.185084,0.185084 0 0 0 -0.13247,0.31863 l 0.42381,0.423816 -0.42381,0.423512 a 0.185084,0.185084 0 1 0 0.26159,0.261896 l 0.4238,-0.423818 0.42352,0.423818 a 0.185084,0.185084 0 1 0 0.26159,-0.261896 l -0.42382,-0.423512 0.42382,-0.423816 a 0.185084,0.185084 0 1 0 -0.26159,-0.261896 l -0.42352,0.423818 -0.4238,-0.423818 a 0.185084,0.185084 0 0 0 -0.12912,-0.05673 z"
+       style="color:#000000;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:medium;line-height:normal;font-family:sans-serif;font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-feature-settings:normal;text-indent:0;text-align:start;text-decoration:none;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000000;letter-spacing:normal;word-spacing:normal;text-transform:none;writing-mode:lr-tb;direction:ltr;text-orientation:mixed;dominant-baseline:auto;baseline-shift:baseline;text-anchor:start;white-space:normal;shape-padding:0;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate" />
+    <rect
+       inkscape:export-ydpi="170.52435"
+       inkscape:export-xdpi="170.52435"
+       inkscape:export-filename="C:\Users\Aidan\Desktop\FactoryBlocksRepo\Factory Blocks\Assets\Resources\UI\Buttons.png"
+       style="fill:#ffcc4d;fill-opacity:1;stroke:#8d826d;stroke-width:1;stroke-linecap:round;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect2872"
+       width="4.8776689"
+       height="4.8776689"
+       x="94.721992"
+       y="77.310463"
+       ry="2.1796746" />
+    <path
+       style="color:#000000;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:medium;line-height:normal;font-family:sans-serif;font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-feature-settings:normal;text-indent:0;text-align:start;text-decoration:none;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000000;letter-spacing:normal;word-spacing:normal;text-transform:none;writing-mode:lr-tb;direction:ltr;text-orientation:mixed;dominant-baseline:auto;baseline-shift:baseline;text-anchor:start;white-space:normal;shape-padding:0;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#7a715f;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+       d="m 96.902094,76.809782 c -1.475891,0 -2.679422,1.204047 -2.679422,2.679938 v 0.519348 c 0,1.475893 1.203531,2.67994 2.679422,2.67994 h 0.517798 c 1.47589,0 2.679938,-1.204047 2.679938,-2.67994 V 79.48972 c 0,-1.475891 -1.204048,-2.679938 -2.679938,-2.679938 z m 0.03721,0.347781 h 0.443383 c 1.304012,0 2.369362,1.065353 2.369362,2.369365 v 0.44545 c 3e-6,1.304015 -1.06535,2.368849 -2.369362,2.368849 h -0.443383 c -1.304015,0 -2.370916,-1.064834 -2.370916,-2.368849 v -0.44545 c 0,-1.304012 1.066901,-2.369365 2.370916,-2.369365 z"
+       id="rect2876"
+       inkscape:export-filename="C:\Users\Aidan\Desktop\FactoryBlocksRepo\Factory Blocks\Assets\Resources\UI\Buttons.png"
+       inkscape:export-xdpi="170.52435"
+       inkscape:export-ydpi="170.52435"
+       inkscape:connector-curvature="0" />
+    <rect
+       ry="2.1796746"
+       y="77.310463"
+       x="101.27094"
+       height="4.8776689"
+       width="4.8776689"
+       id="rect2884"
+       style="fill:#ffcc4d;fill-opacity:1;stroke:#7a715f;stroke-width:1;stroke-linecap:round;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       inkscape:export-filename="C:\Users\Aidan\Desktop\FactoryBlocksRepo\Factory Blocks\Assets\Resources\UI\Buttons.png"
+       inkscape:export-xdpi="170.52435"
+       inkscape:export-ydpi="170.52435" />
+    <path
+       id="path2886"
+       d="m 103.45104,76.809781 c -1.47589,0 -2.67942,1.204048 -2.67942,2.679939 v 0.519348 c 0,1.475893 1.20353,2.67994 2.67942,2.67994 h 0.5178 c 1.47589,0 2.67994,-1.204047 2.67994,-2.67994 V 79.48972 c 0,-1.475891 -1.20405,-2.679939 -2.67994,-2.679939 z m 0.0372,0.347782 h 0.44339 c 1.30401,0 2.36936,1.065353 2.36936,2.369365 v 0.44545 c 0,1.304015 -1.06535,2.368849 -2.36936,2.368849 h -0.44339 c -1.30401,0 -2.37091,-1.064834 -2.37091,-2.368849 v -0.44545 c 0,-1.304012 1.0669,-2.369365 2.37091,-2.369365 z"
+       style="color:#000000;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:medium;line-height:normal;font-family:sans-serif;font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-feature-settings:normal;text-indent:0;text-align:start;text-decoration:none;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000000;letter-spacing:normal;word-spacing:normal;text-transform:none;writing-mode:lr-tb;direction:ltr;text-orientation:mixed;dominant-baseline:auto;baseline-shift:baseline;text-anchor:start;white-space:normal;shape-padding:0;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#8d826d;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="C:\Users\Aidan\Desktop\FactoryBlocksRepo\Factory Blocks\Assets\Resources\UI\Buttons.png"
+       inkscape:export-xdpi="170.52435"
+       inkscape:export-ydpi="170.52435" />
+    <path
+       inkscape:connector-curvature="0"
+       id="path2890"
+       d="m 122.88666,91.276394 c -0.11689,0 -0.20802,0.09113 -0.20802,0.20802 v 0.447644 c 0,0.11689 0.0911,0.208021 0.20802,0.208021 h 0.44695 c 0.11689,0 0.20802,-0.09113 0.20802,-0.208021 v -0.447644 c 0,-0.11689 -0.0911,-0.20802 -0.20802,-0.20802 z"
+       style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.16500001;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:0.33000001, 0.33000001;stroke-dashoffset:0.82335001;stroke-opacity:1" />
+    <path
+       style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.16500001;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:0.33000001, 0.33000001;stroke-dashoffset:0.82335001;stroke-opacity:1"
+       d="m 122.88666,92.368049 c -0.11689,0 -0.20802,0.09113 -0.20802,0.20802 v 0.447644 c 0,0.11689 0.0911,0.208021 0.20802,0.208021 h 0.44695 c 0.11689,0 0.20802,-0.09113 0.20802,-0.208021 v -0.447644 c 0,-0.11689 -0.0911,-0.20802 -0.20802,-0.20802 z"
+       id="path2892"
+       inkscape:connector-curvature="0" />
+    <path
+       inkscape:connector-curvature="0"
+       id="path2894"
+       d="m 121.77673,92.368049 c -0.11689,0 -0.20802,0.09113 -0.20802,0.20802 v 0.447644 c 0,0.11689 0.0911,0.208021 0.20802,0.208021 h 0.44695 c 0.11689,0 0.20802,-0.09113 0.20802,-0.208021 v -0.447644 c 0,-0.11689 -0.0911,-0.20802 -0.20802,-0.20802 z"
+       style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.16500001;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:0.33000001, 0.33000001;stroke-dashoffset:0.82335001;stroke-opacity:1" />
+    <path
+       style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.16500001;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:0.33000001, 0.33000001;stroke-dashoffset:0.82335001;stroke-opacity:1"
+       d="m 121.77673,91.276394 c -0.11689,0 -0.20802,0.09113 -0.20802,0.20802 v 0.447644 c 0,0.11689 0.0911,0.208021 0.20802,0.208021 h 0.44695 c 0.11689,0 0.20802,-0.09113 0.20802,-0.208021 v -0.447644 c 0,-0.11689 -0.0911,-0.20802 -0.20802,-0.20802 z"
+       id="path2896"
+       inkscape:connector-curvature="0" />
+    <path
+       style="color:#000000;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:medium;line-height:normal;font-family:sans-serif;font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-feature-settings:normal;text-indent:0;text-align:start;text-decoration:none;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000000;letter-spacing:normal;word-spacing:normal;text-transform:none;writing-mode:lr-tb;direction:ltr;text-orientation:mixed;dominant-baseline:auto;baseline-shift:baseline;text-anchor:start;white-space:normal;shape-padding:0;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.465;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:3.1118741;stroke-opacity:1;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+       d="m 132.7414,90.197607 c -0.28327,-0.13212 -0.62845,0.002 -0.76693,0.299039 -0.1385,0.296997 -0.0198,0.648648 0.26343,0.780727 l 0.32092,0.149657 c 0.28326,0.132113 0.62793,-0.0035 0.76644,-0.300461 0.13848,-0.296979 0.0204,-0.647169 -0.26292,-0.779242 z m -0.11323,0.242607 0.32092,0.14967 c 0.15905,0.07408 0.22238,0.261923 0.14463,0.428654 -0.0778,0.166689 -0.26284,0.239901 -0.42181,0.165763 l -0.32093,-0.149662 c -0.15897,-0.07417 -0.22187,-0.262998 -0.1442,-0.429686 0.0778,-0.166685 0.26236,-0.23887 0.42139,-0.164652 z"
+       id="rect2898"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="C:\Users\Aidan\Desktop\FactoryBlocksRepo\Factory Blocks\Assets\Resources\UI\editoricons1.png"
+       inkscape:export-xdpi="1007.6456"
+       inkscape:export-ydpi="1007.6456" />
+    <path
+       style="color:#000000;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:medium;line-height:normal;font-family:sans-serif;font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-feature-settings:normal;text-indent:0;text-align:start;text-decoration:none;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000000;letter-spacing:normal;word-spacing:normal;text-transform:none;writing-mode:lr-tb;direction:ltr;text-orientation:mixed;dominant-baseline:auto;baseline-shift:baseline;text-anchor:start;white-space:normal;shape-padding:0;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.465;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:3.1118741;stroke-opacity:1;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+       d="m 133.77367,91.342019 c -0.28326,-0.132114 -0.62746,0.0025 -0.76597,0.299438 -0.13848,0.29698 -0.0208,0.648173 0.26247,0.780276 l 0.32092,0.149664 c 0.28324,0.132102 0.62794,-0.0035 0.76644,-0.300457 0.13841,-0.297041 0.0204,-0.647169 -0.26293,-0.779267 z m -0.11314,0.242646 0.32091,0.149664 c 0.15904,0.07409 0.2224,0.261935 0.14463,0.428654 -0.0778,0.16669 -0.26283,0.239904 -0.42181,0.165773 l -0.32096,-0.149557 c -0.15904,-0.07409 -0.22193,-0.262928 -0.1442,-0.429687 0.0778,-0.166694 0.26236,-0.238875 0.42136,-0.164743 z"
+       id="rect2900"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="C:\Users\Aidan\Desktop\FactoryBlocksRepo\Factory Blocks\Assets\Resources\UI\editoricons1.png"
+       inkscape:export-xdpi="1007.6456"
+       inkscape:export-ydpi="1007.6456" />
+    <path
+       style="color:#000000;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:medium;line-height:normal;font-family:sans-serif;font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-feature-settings:normal;text-indent:0;text-align:start;text-decoration:none;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000000;letter-spacing:normal;word-spacing:normal;text-transform:none;writing-mode:lr-tb;direction:ltr;text-orientation:mixed;dominant-baseline:auto;baseline-shift:baseline;text-anchor:start;white-space:normal;shape-padding:0;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.465;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:3.1118741;stroke-opacity:1;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+       d="m 129.93931,90.949346 c -0.1615,0.0011 -0.32161,0.07335 -0.43821,0.203088 l 0.13849,0.09663 c 0.029,0.02032 0.046,0.0245 0.0884,0.03979 0.10866,-0.08638 0.25989,-0.101595 0.37621,-0.02016 l 0.28939,0.203089 c 0.14372,0.100626 0.17372,0.296325 0.0682,0.447002 -0.10551,0.150678 -0.29968,0.190545 -0.44338,0.08992 l -0.29094,-0.203088 c -0.0749,-0.05241 -0.11648,-0.131236 -0.12609,-0.216009 -0.0526,-0.01654 -0.10413,-0.0382 -0.15141,-0.07131 l -0.0971,-0.06821 c -0.0408,0.217503 0.0372,0.444584 0.2222,0.574124 l 0.28888,0.203089 c 0.25601,0.179271 0.61871,0.106688 0.80667,-0.161747 0.18796,-0.268433 0.13296,-0.635138 -0.12299,-0.81442 l -0.29094,-0.203089 c -0.096,-0.06723 -0.20647,-0.09942 -0.3173,-0.0987 z m -0.45836,0.226859 c -0.009,0.01154 -0.0203,0.02122 -0.029,0.03359 -0.0452,0.06461 -0.0759,0.1352 -0.0935,0.207222 l 0.10956,0.07648 c 0.0422,0.02956 0.088,0.04916 0.13487,0.0646 -0.001,-0.06856 0.014,-0.138912 0.0579,-0.201536 0.013,-0.01852 0.0203,-0.01619 0.0357,-0.03126 -0.0293,-0.0092 -0.0483,-0.03225 -0.075,-0.05091 z"
+       id="path2912"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cccccccccccccccccccccccccccc"
+       inkscape:export-filename="C:\Users\Aidan\Desktop\FactoryBlocksRepo\Factory Blocks\Assets\Resources\UI\editoricons1.png"
+       inkscape:export-xdpi="1007.6456"
+       inkscape:export-ydpi="1007.6456" />
+    <rect
+       ry="2.1796746"
+       y="71.125824"
+       x="94.721992"
+       height="4.8776689"
+       width="4.8776689"
+       id="rect2942"
+       style="fill:#d89f11;fill-opacity:1;stroke:#8d826d;stroke-width:1;stroke-linecap:round;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       inkscape:export-filename="C:\Users\Aidan\Desktop\FactoryBlocksRepo\Factory Blocks\Assets\Resources\UI\Buttons.png"
+       inkscape:export-xdpi="170.52435"
+       inkscape:export-ydpi="170.52435" />
+    <path
+       inkscape:export-ydpi="170.52435"
+       inkscape:export-xdpi="170.52435"
+       inkscape:export-filename="C:\Users\Aidan\Desktop\FactoryBlocksRepo\Factory Blocks\Assets\Resources\UI\Buttons.png"
+       id="path2944"
+       d="m 96.902094,70.625146 c -1.475891,0 -2.679422,1.204047 -2.679422,2.679938 v 0.519348 c 0,1.475894 1.203531,2.679941 2.679422,2.679941 h 0.517798 c 1.47589,0 2.679938,-1.204047 2.679938,-2.679941 v -0.519348 c 0,-1.475891 -1.204048,-2.679938 -2.679938,-2.679938 z m 0.03721,0.347782 h 0.443383 c 1.304012,0 2.369362,1.065352 2.369362,2.369365 v 0.445449 c 3e-6,1.304015 -1.06535,2.368849 -2.369362,2.368849 h -0.443383 c -1.304015,0 -2.370916,-1.064834 -2.370916,-2.368849 v -0.445449 c 0,-1.304013 1.066901,-2.369365 2.370916,-2.369365 z"
+       style="color:#000000;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:medium;line-height:normal;font-family:sans-serif;font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-feature-settings:normal;text-indent:0;text-align:start;text-decoration:none;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000000;letter-spacing:normal;word-spacing:normal;text-transform:none;writing-mode:lr-tb;direction:ltr;text-orientation:mixed;dominant-baseline:auto;baseline-shift:baseline;text-anchor:start;white-space:normal;shape-padding:0;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#7a715f;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+       inkscape:connector-curvature="0" />
+    <rect
+       inkscape:export-ydpi="170.52435"
+       inkscape:export-xdpi="170.52435"
+       inkscape:export-filename="C:\Users\Aidan\Desktop\FactoryBlocksRepo\Factory Blocks\Assets\Resources\UI\Buttons.png"
+       style="fill:#ecdcb5;fill-opacity:1;stroke:#8d826d;stroke-width:1;stroke-linecap:round;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect2952"
+       width="4.8776689"
+       height="4.8776689"
+       x="101.03892"
+       y="71.125824"
+       ry="2.1796746" />
+    <path
+       inkscape:connector-curvature="0"
+       style="color:#000000;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:medium;line-height:normal;font-family:sans-serif;font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-feature-settings:normal;text-indent:0;text-align:start;text-decoration:none;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000000;letter-spacing:normal;word-spacing:normal;text-transform:none;writing-mode:lr-tb;direction:ltr;text-orientation:mixed;dominant-baseline:auto;baseline-shift:baseline;text-anchor:start;white-space:normal;shape-padding:0;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#7a715f;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+       d="m 103.21902,70.625146 c -1.47589,0 -2.67942,1.204047 -2.67942,2.679938 v 0.519348 c 0,1.475894 1.20353,2.679941 2.67942,2.679941 h 0.5178 c 1.47589,0 2.67994,-1.204047 2.67994,-2.679941 v -0.519348 c 0,-1.475891 -1.20405,-2.679938 -2.67994,-2.679938 z m 0.0372,0.347782 h 0.44338 c 1.30402,0 2.36937,1.065352 2.36937,2.369365 v 0.445449 c 0,1.304015 -1.06535,2.368849 -2.36937,2.368849 h -0.44338 c -1.30401,0 -2.37091,-1.064834 -2.37091,-2.368849 v -0.445449 c 0,-1.304013 1.0669,-2.369365 2.37091,-2.369365 z"
+       id="path2954"
+       inkscape:export-filename="C:\Users\Aidan\Desktop\FactoryBlocksRepo\Factory Blocks\Assets\Resources\UI\Buttons.png"
+       inkscape:export-xdpi="170.52435"
+       inkscape:export-ydpi="170.52435" />
+    <path
+       style="fill:#ffffff;stroke:#ffffff;stroke-width:0.465;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none"
+       d="m 147.92867,90.313789 v 1.689645"
+       id="path2456"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="C:\Users\Aidan\Desktop\FactoryBlocksRepo\Factory Blocks\Assets\Resources\UI\plusandminus.png"
+       inkscape:export-xdpi="1504.3008"
+       inkscape:export-ydpi="1504.3008" />
+    <path
+       inkscape:connector-curvature="0"
+       id="path2458"
+       d="m 148.77349,91.158612 h -1.68964"
+       style="fill:#ffffff;stroke:#ffffff;stroke-width:0.465;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       inkscape:export-filename="C:\Users\Aidan\Desktop\FactoryBlocksRepo\Factory Blocks\Assets\Resources\UI\plusandminus.png"
+       inkscape:export-xdpi="1504.3008"
+       inkscape:export-ydpi="1504.3008" />
+    <path
+       style="fill:#ffffff;stroke:#ffffff;stroke-width:0.465;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 148.77349,92.865796 h -1.68964"
+       id="path2467"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="C:\Users\Aidan\Desktop\FactoryBlocksRepo\Factory Blocks\Assets\Resources\UI\plusandminus.png"
+       inkscape:export-xdpi="1504.3008"
+       inkscape:export-ydpi="1504.3008" />
   </g>
 </svg>
