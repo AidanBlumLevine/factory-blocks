@@ -17,21 +17,20 @@ public class HomescreenManager : MonoBehaviour
     }
 
     GameManager gm;
-    public GameObject levelList,levelPlayPrefab;
 
     void Start()
     {
         gm = GameManager.Instance;
-        
-        foreach (Level l in gm.levels)
-        {
-            Instantiate(levelPlayPrefab, levelList.transform).GetComponent<LevelPreview>().Set(l);
-        }
     }
 
-    public void PlayLevel(Level l)
+    public void Play()
     {
-        gm.LoadScene(1, l);
+        gm.LoadScene(3);
+    }
+
+    public void Continue()
+    {
+        //gm.Continue();
     }
 
     public void Edit()

@@ -22,6 +22,7 @@ public class Tile : MonoBehaviour
     public int[] ignoredCollisionTypes = new int[] { 4 };
 
     public Vector2Int pos { get; private set; }
+    Vector2 lastMove;
     public int ID { get; private set; }
 
     TileManager tm;
@@ -60,16 +61,35 @@ public class Tile : MonoBehaviour
     {
         if ((Vector2)transform.position != pos)
         {
+            Vector2 tempPos = transform.position;
             transform.position = Vector2.MoveTowards(transform.position, pos, Time.deltaTime * moveSpeed);
             moveSpeed += Time.deltaTime * acceleration;
+            Vector2 move = (Vector2)transform.position - tempPos;
+            if (move.SqrMagnitude() < .01f)
+            {
+                Vector2 norm = move.normalized;
+                Vector2Int dir = new Vector2Int((int)norm.x, (int)norm.y);
+                tm.GetTile(pos + dir).Collision(dir, type);
+            }
+            lastMove = (Vector2)transform.position - tempPos;
         }
         if(type == 4)
         {
             if(master == null)
             {
-                tm.RemoveTile(this);
+                foreach(Vector2Int v in new Vector2Int[] { new Vector2Int(0, 1), new Vector2Int(-1, 0), new Vector2Int(1, 0), new Vector2Int(0, -1) }) {
+                    Tile test = tm.GetTile(pos + v);
+                    if (test != null && test.type == 1) {
+                        master = test;
+                        test.AddSlave(this);
+                        break;
+                    }
+                }
+                if(master == null)
+                {
+                    tm.RemoveTile(this);
+                }
             }
-            //SPIKE
         }
     }
 
@@ -82,7 +102,7 @@ public class Tile : MonoBehaviour
     }
 
     public void Delete()
-    {
+    {//i dont thinkthis is used much
         tm.RemoveMap(pos, this);
         Destroy(gameObject);
     }
@@ -140,13 +160,17 @@ public class Tile : MonoBehaviour
         return b;
     }
 
-    public void Collision(Vector2Int hitDir)
+    public void Collision(Vector2Int hitDir, int hitbyType)
     {
-        //TODO
+        if(type == 1)
+        {
+            tm.Particle(transform.position, hitDir, hitbyType);
+        }
     }
 
-    public void Push(Vector2Int dir)
+    public bool Push(Vector2Int dir) //returns true if it moved (only masters, but all it needs is one true)
     {
+        bool moved = false;
         if (isMaster && kinetic)
         {
             List<Tile> pushedTiles = GetConnected();
@@ -176,10 +200,12 @@ public class Tile : MonoBehaviour
                 if(dist > 0)
                 {
                     foundMore = true; //it doesnt add them if they are more than 1 away 
+                    moved = true;
                 }
             }
         }
         moveSpeed = startingMoveSpeed;
+        return moved;
     }
 
     List<Tile> GetConnected()
@@ -231,35 +257,20 @@ public class Tile : MonoBehaviour
 
     public void SetSprite(List<Tile> linked)
     {
-        if(type == 1)
+        linked.RemoveAll(item => item == null);
+        bool[] sides = new bool[8];
+        Vector2Int[] dirs = new Vector2Int[] {new Vector2Int(1, -1), new Vector2Int(0, -1), new Vector2Int(-1, -1),
+        new Vector2Int(-1, 0), new Vector2Int(-1, 1), new Vector2Int(0, 1), new Vector2Int(1, 1), new Vector2Int(1, 0) };
+        for (int i = 0; i < 8; i++)
         {
-            print(globalLinkGroup.Count);
-        }
-        if(type == 4)
-        {
-            if (master != null) //this could fire before it had a chanceto destroy itself
+            Tile inPos = linked.FirstOrDefault(element => element.pos + dirs[i] == pos);
+            sides[i] = (inPos != null);
+            if (type == 4 && sides[i] && inPos.type == 4)
             {
-                Vector2 dir = pos - master.pos;
-                sr.sprite = sprites[(int)(Vector2.SignedAngle(Vector2.right, dir) / 90)+ 1];
+                sides[i] = false;
             }
         }
-        else
-        {
-            linked.RemoveAll(item => item == null);
-            bool[] sides = new bool[8];
-            Vector2Int[] dirs = new Vector2Int[] {new Vector2Int(1, -1), new Vector2Int(0, -1), new Vector2Int(-1, -1),
-            new Vector2Int(-1, 0), new Vector2Int(-1, 1), new Vector2Int(0, 1), new Vector2Int(1, 1), new Vector2Int(1, 0) };
-            for (int i = 0; i < 8; i++)
-            {
-                Tile inPos = linked.FirstOrDefault(element => element.pos + dirs[i] == pos);
-                sides[i] = (inPos != null);
-                if (sides[i] && inPos.type == 4 && inPos.master != this)
-                {
-                    sides[i] = false;
-                }
-            }
-            GetSprite(sides);
-        }
+        GetSprite(sides);
     }
 
     void GetSprite(bool[] atp) //sets sprite, takes in 8 bools starting top left going clockwise for if there is a mergable tile
@@ -318,13 +329,13 @@ public class Tile : MonoBehaviour
         {
             if (!merging)
             {
-                StartCoroutine(MergeSprites(spritesToMerge, situationName,imgName));
+                MergeSprites(spritesToMerge, situationName,imgName);
             }
         }
     }
 
     //TODO it saves the old merge not the new one so spamming will leave you with out of date sprites
-    IEnumerator MergeSprites(List<int> spriteIndexes,string situationName,string imgName)
+    void MergeSprites(List<int> spriteIndexes,string situationName,string imgName)
     {
         merging = true;
 
@@ -337,38 +348,30 @@ public class Tile : MonoBehaviour
             done = false;
             while (!done)
             {
-                if (GameManager.Instance.ProcessHeavy(.5f))
+                for (int x = 0; x < sprites[i].rect.width; x++)
                 {
-                    for (int x = 0; x < sprites[i].rect.width; x++)
+                    for (int y = 0; y < sprites[i].rect.height; y++)
                     {
-                        for (int y = 0; y < sprites[i].rect.height; y++)
-                        {
-                            int xpos = flipX&&i==12 ? (int)sprites[i].rect.width - x - 1 + (int)sprites[i].rect.x : x + (int)sprites[i].rect.x;
-                            int ypos = flipY&&i==12 ? (int)sprites[i].rect.height - y - 1 + (int)sprites[i].rect.y : y + (int)sprites[i].rect.y;
+                        int xpos = flipX&&i==12 ? (int)sprites[i].rect.width - x - 1 + (int)sprites[i].rect.x : x + (int)sprites[i].rect.x;
+                        int ypos = flipY&&i==12 ? (int)sprites[i].rect.height - y - 1 + (int)sprites[i].rect.y : y + (int)sprites[i].rect.y;
 
-                            Color32 pixel = sprites[i].texture.GetPixel(xpos, ypos);
-                            if (pixel.a != 0)
-                            {
-                                pixels[x + tex.width * y] = pixel;
-                            }
+                        Color32 pixel = sprites[i].texture.GetPixel(xpos, ypos);
+                        if (pixel.a != 0)
+                        {
+                            pixels[x + tex.width * y] = pixel;
                         }
                     }
-                    done = true;
                 }
-                yield return null;
+                done = true;
             }
 
         }
         done = false;
         while (!done)
         {
-            if (GameManager.Instance.ProcessHeavy(1))
-            {
-                tex.SetPixels32(pixels);
-                tex.Apply();
-                done = true;
-            }
-            yield return null;
+            tex.SetPixels32(pixels);
+            tex.Apply();
+            done = true;
         }
         string path = "tile" + type + "/" + imgName + ".png";
         if (!File.Exists(path))
@@ -382,6 +385,9 @@ public class Tile : MonoBehaviour
             sprite = sr.sprite
         });
         merging = false;
-
+    }
+    public void RemoveFromGlobal()
+    {
+        globalLinkGroup.Remove(this);
     }
 }

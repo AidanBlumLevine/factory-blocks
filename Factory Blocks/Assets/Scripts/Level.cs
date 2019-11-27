@@ -5,8 +5,9 @@ using UnityEngine;
 public class Level
 {
     public int[] stars = new int[] { 0, 0, 0 };
-    public int width = 0, height = 0;
+    public int width = 0, height = 0, bestMoves = 99999;
     public string name = "";
+    public bool permanent;
     [System.Serializable]
     public struct block
     {

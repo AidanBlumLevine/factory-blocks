@@ -35,10 +35,10 @@ public class GamePausePopup : MonoBehaviour
         anim.SetBool("Open", false);
     }
 
-    public void Home()
+    public void Back()
     {
         anim.SetBool("Open", false);
-        GameManager.Instance.LoadScene(0);
+        GameManager.Instance.LoadScene(3);
     }
 
     public void Edit()

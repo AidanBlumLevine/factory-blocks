@@ -68,7 +68,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 3
   m_Sprite: {fileID: 21300000, guid: dd98b2f2a77112e4a990bae3c730bfa9, type: 3}
   m_Color: {r: 0.7735849, g: 0.29592147, b: 0.19339623, a: 1}
   m_FlipX: 0
@@ -93,10 +93,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   texture: {fileID: 2800000, guid: 4ef29068869ff454598291959c4a8d3b, type: 3}
-  connectToClones: 1
+  globalGroup: 0
   kinetic: 0
   rotateMid: 0
   type: 100
+  ignoredCollisionTypes: 04000000
 --- !u!1 &6210186170268732557
 GameObject:
   m_ObjectHideFlags: 0

@@ -20,35 +20,70 @@ public class TileManager : MonoBehaviour
     }
 
     GameObject[] tilePrefabs;
-
-    int width, height;
+    public GameObject CrateParticle;
+    int width, height, moves;
     List<Tile> tiles = new List<Tile>();
     List<Tile> goalBlocks = new List<Tile>();
     bool lastStill = true;
     Tile[,][] level;
     public Level loadedLevel { get; private set; }
+    [HideInInspector]
     public bool won = false, playing = true;
+    public GameWonPopup wonPopup;
+    public CoinSlider coins;
 
     void Update()
     {
-        if(Still() && !lastStill && goalBlocks.Count > 0)
+        if (Still() && !lastStill)
         {
             won = true;
-            foreach(Tile t in goalBlocks)
+            foreach (Tile t in goalBlocks)
             {
-                if(GetTile(t.pos,new int[] { 2 }) == null)
+                if (GetTile(t.pos, new int[] { 2 }) == null)
                 {
                     won = false;
+                }
+            }
+
+            if(won)
+            {
+                if (loadedLevel.permanent && loadedLevel.bestMoves > moves)
+                {
+                    GameManager.Instance.UpdateBestMoves(moves, loadedLevel.name);
+                }
+                wonPopup.Won(loadedLevel);
+            }
+
+            foreach (Tile t in tiles) //TODO FIX
+            {
+                if (t.type == 4)
+                {
+                    if (GetTile(t.pos))
+                    {
+                        RemoveTile(GetTile(t.pos));
+                    }
                 }
             }
         }
         lastStill = Still();
     }
 
+    public void Particle(Vector2 pos, Vector2 dir, int type)
+    {
+        Quaternion direction = Quaternion.FromToRotation(Vector2.right, dir);
+        if(type == 0)
+        {
+           // Instantiate(CrateParticle, pos, direction);
+        }
+    }
+
     public void LoadLevel(Level levelMap)
     {
         loadedLevel = levelMap;
 
+        if(coins!=null)coins.Set(levelMap);
+
+        moves = 0;
         width = levelMap.width;
         height = levelMap.height;
 
@@ -119,6 +154,10 @@ public class TileManager : MonoBehaviour
         {
             goalBlocks.Add(t);
         }
+        if (t.globalGroup)
+        {
+            t.RemoveFromGlobal();
+        }
         t.SetMaster(null);
         Destroy(t.gameObject);
     }
@@ -129,6 +168,7 @@ public class TileManager : MonoBehaviour
         levelMap.width = width;
         levelMap.height = height;
         levelMap.name = name;
+        levelMap.permanent = false;
 
         int savedTiles = 0;
         foreach(Tile t in tiles){ if (t.ID >= 0) { savedTiles++; }}
@@ -141,8 +181,8 @@ public class TileManager : MonoBehaviour
                 saveNumber++;
             }
         }
-
         GameManager.Instance.SaveLevel(levelMap);
+        CameraController.Instance.Screenshot(name);
         return levelMap;
     }
 
@@ -150,13 +190,26 @@ public class TileManager : MonoBehaviour
     {
         if (Still() && !won && playing)
         {
+            bool moved = false;
             foreach (Tile t in tiles)
             {
-                if (t.type == 2 || t.type == 3) t.Push(dir);
+                if (t.type == 2 || t.type == 3)
+                {
+                    if (t.Push(dir)) { moved = true; }
+                }
             }
             foreach (Tile t in tiles)
             {
-                if (t.type != 2 && t.type != 3) t.Push(dir);
+                if (t.type != 2 && t.type != 3)
+                {
+                    if (t.Push(dir)) { moved = true; }
+                }
+            }
+
+            if (moved)
+            {
+                moves++;
+                coins.Set(moves);
             }
         }
     }

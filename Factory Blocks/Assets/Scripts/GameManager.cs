@@ -2,17 +2,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    float heavyProcessTally;
-    public float totalHeavyProcess = 1.25f;
-    public List<Level> levels { get; private set; }
+    public List<LevelLocation> levels { get; private set; }
     public static GameManager Instance;
     public GameObject generalPopupPrefab;
     public LoadingOverlay loadingOverlay;
+    public struct LevelLocation
+    {
+        public Level level;
+        public string path;
+    }
     void Awake()
     {
         if (Instance == null)
@@ -24,44 +28,32 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-
-        levels = new List<Level>();
+        levels = new List<LevelLocation>();
         if (!Directory.Exists(Application.persistentDataPath + "/levels/"))
         {
             Directory.CreateDirectory(Application.persistentDataPath + "/levels/");
+            Directory.CreateDirectory(Application.persistentDataPath + "/thumbnails/");
         }
         DirectoryInfo dir = new DirectoryInfo(Application.persistentDataPath + "/levels/");
         FileInfo[] info = dir.GetFiles("*.json");
         foreach (FileInfo f in info)
         {
             string contents = File.ReadAllText(Application.persistentDataPath + "/levels/" + f.Name);
-            levels.Add(JsonUtility.FromJson<Level>(contents));
+            levels.Add(new LevelLocation {
+                level = JsonUtility.FromJson<Level>(contents),
+                path = f.FullName
+            });
         }
     }
 
     public bool LevelNameTaken(string n)
     {
-        foreach(Level l in levels)
+        foreach(LevelLocation l in levels)
         {
-            if (l.name.Equals(n))
+            if (l.level.name.Equals(n))
             {
                 return true;
             }
-        }
-        return false;
-    }
-
-    void LateUpdate()
-    {
-        heavyProcessTally = 0;
-    }
-
-    public bool ProcessHeavy(float cost)
-    {
-        if (heavyProcessTally + cost <= totalHeavyProcess)
-        {
-            heavyProcessTally += cost;
-            return true;
         }
         return false;
     }
@@ -73,7 +65,7 @@ public class GameManager : MonoBehaviour
 
     IEnumerator LoadAsynchronously (int sceneIndex, Level level)
     {
-        Vector2 dir = sceneIndex > SceneManager.GetActiveScene().buildIndex ? Vector2.left : Vector2.right;
+        Vector2 dir = TransitionDir(SceneManager.GetActiveScene().buildIndex, sceneIndex);
         loadingOverlay.Show(dir);
         while (loadingOverlay.Moving)
         {
@@ -102,35 +94,41 @@ public class GameManager : MonoBehaviour
         loadingOverlay.Hide(dir);
     }
 
+    Vector2 TransitionDir(int from, int to)
+    {
+        float f = (from == 3) ? .5f : from;
+        float t = (to == 3) ? .5f : to;
+        return (t > f) ? Vector2.left : Vector2.right;
+    }
+
     public void SaveLevel(Level levelMap)
     {
         string contents = JsonUtility.ToJson(levelMap, true);
         string path = Application.persistentDataPath + "/levels/" + string.Format(@"{0}.json", Guid.NewGuid());
         if (LevelNameTaken(levelMap.name))
         {
-            DirectoryInfo dir = new DirectoryInfo(Application.persistentDataPath + "/levels/");
-            FileInfo[] info = dir.GetFiles("*.json");
-            foreach (FileInfo f in info)
+            LevelLocation toRemove = levels.First(element => element.level.name == levelMap.name);
+            levels.Remove(toRemove);
+            if (File.Exists(toRemove.path)){
+                File.Delete(toRemove.path);
+            }
+            if (File.Exists(Application.persistentDataPath + "/thumbnails/" + toRemove.level.name + ".png"))
             {
-                string lc = File.ReadAllText(Application.persistentDataPath + "/levels/" + f.Name);
-                if (JsonUtility.FromJson<Level>(contents).name.Equals(levelMap.name))
-                {
-                    path = f.FullName;
-                    Level removeLevel = null;
-                    foreach(Level l in levels)
-                    {
-                        if(l.name == levelMap.name)
-                        {
-                            removeLevel = l;
-                        }
-                    }
-                    levels.Remove(removeLevel);
-                    File.Delete(path);
-                    break;
-                }
+                File.Delete(Application.persistentDataPath + "/thumbnails/" + toRemove.level.name + ".png");
             }
         }
         File.WriteAllText(path, contents);
-        levels.Add(levelMap);
+        levels.Add(new LevelLocation {
+            level = levelMap,
+            path = path
+        });
+    }
+
+    public void UpdateBestMoves(int moves, String levelName)
+    {
+        LevelLocation editedLevelInfo = levels.First(element => element.level.name == levelName);
+        editedLevelInfo.level.bestMoves = moves;
+        File.Delete(editedLevelInfo.path);
+        File.WriteAllText(editedLevelInfo.path, JsonUtility.ToJson(editedLevelInfo.level, true));
     }
 }
