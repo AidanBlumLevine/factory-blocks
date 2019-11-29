@@ -34,17 +34,17 @@ public class CoinSlider : MonoBehaviour
             coin3.transform.GetChild(0).gameObject.SetActive(false);
             coin2.transform.GetChild(0).gameObject.SetActive(false);
             coin1.transform.GetChild(0).gameObject.SetActive(false);
-            if (l.bestMoves <= c1)
+            if (l.bestMoves <= c3)
             {
-                coin1.transform.GetChild(0).gameObject.SetActive(true);
+                coin3.transform.GetChild(0).gameObject.SetActive(true);
             }
             else if (l.bestMoves <= c2)
             {
                 coin2.transform.GetChild(0).gameObject.SetActive(true);
             }
-            else if (l.bestMoves <= c3)
+            else if (l.bestMoves <= c1)
             {
-                coin3.transform.GetChild(0).gameObject.SetActive(true);
+                coin1.transform.GetChild(0).gameObject.SetActive(true);
             }
         }
     }

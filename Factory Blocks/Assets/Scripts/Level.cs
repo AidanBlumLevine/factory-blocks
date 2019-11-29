@@ -8,6 +8,7 @@ public class Level
     public int width = 0, height = 0, bestMoves = 99999;
     public string name = "";
     public bool permanent;
+    public string realLevelName;
     [System.Serializable]
     public struct block
     {

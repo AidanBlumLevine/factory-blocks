@@ -2024,4 +2024,5 @@ MonoBehaviour:
   levelPlayPrefab: {fileID: 7364529929083016151, guid: 23e8e86f621b695438a02918bc514380,
     type: 3}
   customSwitch: {fileID: 1707328151}
+  canvasRoot: {fileID: 850286486}
   easeDuration: 0.3

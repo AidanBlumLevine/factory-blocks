@@ -34,11 +34,17 @@ public class TileManager : MonoBehaviour
 
     void Update()
     {
-        if (Still() && !lastStill)
+        if (Still() && !lastStill && EditorManager.Instance == null) //idk if the last part is necessary
         {
-            won = true;
-            foreach (Tile t in goalBlocks)
+            won = goalBlocks.Count > 0;
+            for (int i = 0; i<goalBlocks.Count;i++)
             {
+                Tile t = goalBlocks[i];
+                if(t== null)
+                {
+                    goalBlocks.RemoveAt(i);
+                    i--;
+                }
                 if (GetTile(t.pos, new int[] { 2 }) == null)
                 {
                     won = false;
@@ -51,18 +57,30 @@ public class TileManager : MonoBehaviour
                 {
                     GameManager.Instance.UpdateBestMoves(moves, loadedLevel.name);
                 }
-                wonPopup.Won(loadedLevel);
+                wonPopup.Won(loadedLevel, moves);
             }
 
-            foreach (Tile t in tiles) //TODO FIX
+            bool anySpiked = false;
+            foreach (Tile t in tiles)
             {
                 if (t.type == 4)
                 {
-                    if (GetTile(t.pos))
+                    if (GetTile(t.pos, new int[] { 2 }))
                     {
-                        RemoveTile(GetTile(t.pos));
+                        GetTile(t.pos, new int[] { 2 }).Spiked();
+                        anySpiked = true;
+                    }
+                    if (GetTile(t.pos, new int[] { 3 })) //twice for nestedblocks
+                    {
+                        GetTile(t.pos, new int[] { 3 }).Spiked();
+                        anySpiked = true;
                     }
                 }
+            }
+
+            if(!won && !anySpiked)
+            {
+                //TODO Queued move
             }
         }
         lastStill = Still();
@@ -75,6 +93,19 @@ public class TileManager : MonoBehaviour
         {
            // Instantiate(CrateParticle, pos, direction);
         }
+    }
+
+    public int LargestID()
+    {
+        int large = 0;
+        foreach(Tile t in tiles)
+        {
+            if(t.ID > large)
+            {
+                large = t.ID;
+            }
+        }
+        return large;
     }
 
     public void LoadLevel(Level levelMap)
@@ -117,6 +148,11 @@ public class TileManager : MonoBehaviour
         RefreshSprites();
         CameraController.Instance.SetPosition(width);
         playing = true;
+
+        if (loadedLevel.realLevelName != null && !loadedLevel.realLevelName.Equals(""))
+        {
+            loadedLevel = GameManager.Instance.levels.First(l => l.level.name.Equals(loadedLevel.realLevelName)).level;
+        }
     }
 
     public void ReloadLevel()
@@ -152,7 +188,7 @@ public class TileManager : MonoBehaviour
         tiles.Remove(t);
         if (t.type == 2)
         {
-            goalBlocks.Add(t);
+            goalBlocks.Remove(t);
         }
         if (t.globalGroup)
         {
@@ -164,6 +200,15 @@ public class TileManager : MonoBehaviour
 
     public Level SaveLevel(string name)
     {
+        Level levelMap = LevelState(name);
+        loadedLevel = levelMap;
+        GameManager.Instance.SaveLevel(levelMap);
+        CameraController.Instance.Screenshot(name);
+        return levelMap;
+    }
+
+    Level LevelState(string name)
+    {
         Level levelMap = new Level();
         levelMap.width = width;
         levelMap.height = height;
@@ -171,18 +216,18 @@ public class TileManager : MonoBehaviour
         levelMap.permanent = false;
 
         int savedTiles = 0;
-        foreach(Tile t in tiles){ if (t.ID >= 0) { savedTiles++; }}
+        foreach (Tile t in tiles) { if (t.ID >= 0) { savedTiles++; } }
         levelMap.tiles = new Level.block[savedTiles];
 
         int saveNumber = 0;
-        foreach (Tile t in tiles) {
-            if (t.ID >= 0){
+        foreach (Tile t in tiles)
+        {
+            if (t.ID >= 0)
+            {
                 levelMap.tiles[saveNumber] = t.BlockData();
                 saveNumber++;
             }
         }
-        GameManager.Instance.SaveLevel(levelMap);
-        CameraController.Instance.Screenshot(name);
         return levelMap;
     }
 
@@ -209,8 +254,19 @@ public class TileManager : MonoBehaviour
             if (moved)
             {
                 moves++;
+                Level t = LevelState("tempStatus");
+                t.realLevelName = loadedLevel.name;
+                GameManager.Instance.SetTempState(t);
                 coins.Set(moves);
             }
+        }
+    }
+
+    void OnDestroy()
+    {
+        if (EditorManager.Instance == null && moves > 0)
+        {
+            GameManager.Instance.SaveTempState(won);
         }
     }
 

@@ -36,13 +36,13 @@ public class Tile : MonoBehaviour
     bool merging = false; //only one merge at once
     bool flipX = false;
     bool flipY = false;
-
+    bool dead = false; 
 
     void Awake()
     {
         ID = nextID;
         nextID++;
-        sprites = Resources.LoadAll<Sprite>("Sprites/" + texture.name);
+        sprites = Resources.LoadAll<Sprite>("TileSheets/" + texture.name);
         sr = GetComponent<SpriteRenderer>();
         tm = TileManager.Instance;
         if (rotateMid)
@@ -69,7 +69,7 @@ public class Tile : MonoBehaviour
             {
                 Vector2 norm = move.normalized;
                 Vector2Int dir = new Vector2Int((int)norm.x, (int)norm.y);
-                tm.GetTile(pos + dir).Collision(dir, type);
+                //tm.GetTile(pos + dir).Collision(dir, type);
             }
             lastMove = (Vector2)transform.position - tempPos;
         }
@@ -78,12 +78,14 @@ public class Tile : MonoBehaviour
             if(master == null)
             {
                 foreach(Vector2Int v in new Vector2Int[] { new Vector2Int(0, 1), new Vector2Int(-1, 0), new Vector2Int(1, 0), new Vector2Int(0, -1) }) {
-                    Tile test = tm.GetTile(pos + v);
-                    if (test != null && test.type == 1) {
-                        master = test;
-                        test.AddSlave(this);
-                        break;
-                    }
+                        Tile test = tm.GetTile(pos + v);
+                        if (test != null && test.type == 1)
+                        {
+                            isMaster = false;
+                            master = test;
+                            master.AddSlave(this);
+                            break;
+                        }
                 }
                 if(master == null)
                 {
@@ -93,18 +95,18 @@ public class Tile : MonoBehaviour
         }
     }
 
+    public void Spiked()
+    {
+        SetMaster(null); //break link
+        StartCoroutine(Spike());
+    }
+
     public void Set(int ID, Vector2Int pos,bool isMaster)
     {
         this.ID = ID;
         this.pos = pos;
         transform.position = new Vector2(pos.x,pos.y);
         this.isMaster = isMaster;
-    }
-
-    public void Delete()
-    {//i dont thinkthis is used much
-        tm.RemoveMap(pos, this);
-        Destroy(gameObject);
     }
 
     public void AddSlave(Tile t)
@@ -124,8 +126,10 @@ public class Tile : MonoBehaviour
                 foreach(Tile s in slaves)
                 {
                     s.WipeMaster();
+                    s.SetSprite();
                 }
                 slaves.Clear();
+                SetSprite();
             }
         }
         else
@@ -186,7 +190,6 @@ public class Tile : MonoBehaviour
                     Tile firstHit = tm.GetFirstTile(t.pos, dir, t.ignoredCollisionTypes, pushedTiles);
                     int hitDist = Mathf.Abs(t.pos.x - firstHit.pos.x) + Mathf.Abs(t.pos.y - firstHit.pos.y) - 1;
                     dist = Mathf.Min(hitDist, dist);
-                    //if(GetConnected().Count==6) print("Tile id:" + t.ID + " hit tile:" + firstHit.ID + " at dist:" + dist);
                     if (firstHit.kinetic && hitDist == 0)
                     {
                         pushedTiles.AddRange(firstHit.GetConnected());
@@ -230,7 +233,7 @@ public class Tile : MonoBehaviour
 
     public bool IsStill()
     {
-        return pos.x == transform.position.x && pos.y == transform.position.y;
+        return pos.x == transform.position.x && pos.y == transform.position.y && !dead;
     }
 
     public void SetSprite()
@@ -265,7 +268,7 @@ public class Tile : MonoBehaviour
         {
             Tile inPos = linked.FirstOrDefault(element => element.pos + dirs[i] == pos);
             sides[i] = (inPos != null);
-            if (type == 4 && sides[i] && inPos.type == 4)
+            if ((type == 1 || type == 4) && sides[i] && inPos.type == 4)
             {
                 sides[i] = false;
             }
@@ -285,28 +288,32 @@ public class Tile : MonoBehaviour
         if (!atp[3]) { spritesToMerge.Add(13); } else { spritesToMerge.Add(14); }
         if (!atp[5]) { spritesToMerge.Add(17); } else { spritesToMerge.Add(22); }
         if (!atp[7]) { spritesToMerge.Add(11); } else { spritesToMerge.Add(10); }
-        //corners
-        if (atp[7] && atp[1] && !atp[0]) { spritesToMerge.Add(0); }
-        if (atp[7] && !atp[1]) { spritesToMerge.Add(5); }
-        if (!atp[7] && atp[1]) { spritesToMerge.Add(1); }
-        if (!atp[7] && !atp[1]) { spritesToMerge.Add(6); }
-        if (atp[1] && atp[3] && !atp[2]) { spritesToMerge.Add(4); }
-        if (atp[1] && !atp[3]) { spritesToMerge.Add(3); }
-        if (!atp[1] && atp[3]) { spritesToMerge.Add(9); }
-        if (!atp[1] && !atp[3]) { spritesToMerge.Add(8); }
-        if (atp[3] && atp[5] && !atp[4]) { spritesToMerge.Add(24); }
-        if (atp[3] && !atp[5]) { spritesToMerge.Add(19); }
-        if (!atp[3] && atp[5]) { spritesToMerge.Add(23); }
-        if (!atp[3] && !atp[5]) { spritesToMerge.Add(18); }
-        if (atp[5] && atp[7] && !atp[6]) { spritesToMerge.Add(20); }
-        if (atp[5] && !atp[7]) { spritesToMerge.Add(21); }
-        if (!atp[5] && atp[7]) { spritesToMerge.Add(15); }
-        if (!atp[5] && !atp[7]) { spritesToMerge.Add(16); }
-        //Full Corners
-        if (atp[7] && atp[1] && atp[0]) { spritesToMerge.Add(25); }
-        if (atp[1] && atp[3] && atp[2]) { spritesToMerge.Add(26); }
-        if (atp[3] && atp[5] && atp[4]) { spritesToMerge.Add(27); }
-        if (atp[5] && atp[7] && atp[6]) { spritesToMerge.Add(28); }
+
+        if (type != 4)
+        {
+            //corners
+            if (atp[7] && atp[1] && !atp[0]) { spritesToMerge.Add(0); }
+            if (atp[7] && !atp[1]) { spritesToMerge.Add(5); }
+            if (!atp[7] && atp[1]) { spritesToMerge.Add(1); }
+            if (!atp[7] && !atp[1]) { spritesToMerge.Add(6); }
+            if (atp[1] && atp[3] && !atp[2]) { spritesToMerge.Add(4); }
+            if (atp[1] && !atp[3]) { spritesToMerge.Add(3); }
+            if (!atp[1] && atp[3]) { spritesToMerge.Add(9); }
+            if (!atp[1] && !atp[3]) { spritesToMerge.Add(8); }
+            if (atp[3] && atp[5] && !atp[4]) { spritesToMerge.Add(24); }
+            if (atp[3] && !atp[5]) { spritesToMerge.Add(19); }
+            if (!atp[3] && atp[5]) { spritesToMerge.Add(23); }
+            if (!atp[3] && !atp[5]) { spritesToMerge.Add(18); }
+            if (atp[5] && atp[7] && !atp[6]) { spritesToMerge.Add(20); }
+            if (atp[5] && !atp[7]) { spritesToMerge.Add(21); }
+            if (!atp[5] && atp[7]) { spritesToMerge.Add(15); }
+            if (!atp[5] && !atp[7]) { spritesToMerge.Add(16); }
+            //Full Corners
+            if (atp[7] && atp[1] && atp[0]) { spritesToMerge.Add(25); }
+            if (atp[1] && atp[3] && atp[2]) { spritesToMerge.Add(26); }
+            if (atp[3] && atp[5] && atp[4]) { spritesToMerge.Add(27); }
+            if (atp[5] && atp[7] && atp[6]) { spritesToMerge.Add(28); }
+        }
 
         foreach (int b in spritesToMerge) { situationName += b+","; imgName += b + "-"; }
 
@@ -338,7 +345,6 @@ public class Tile : MonoBehaviour
     void MergeSprites(List<int> spriteIndexes,string situationName,string imgName)
     {
         merging = true;
-
         Texture2D tex = new Texture2D((int)sprites[0].rect.width, (int)sprites[0].rect.height,TextureFormat.ARGB32,false);
         tex.filterMode = FilterMode.Point;
         Color32[] pixels = new Color32[tex.width * tex.height];
@@ -374,7 +380,7 @@ public class Tile : MonoBehaviour
             done = true;
         }
         string path = "tile" + type + "/" + imgName + ".png";
-        if (!File.Exists(path))
+        if (Directory.Exists("tile" + type + "/") && !File.Exists(path))
         {
             File.WriteAllBytes(path, tex.EncodeToPNG());
         }
@@ -389,5 +395,19 @@ public class Tile : MonoBehaviour
     public void RemoveFromGlobal()
     {
         globalLinkGroup.Remove(this);
+    }
+
+    IEnumerator Spike()
+    {
+        dead = true;
+        Material mat = GetComponent<Renderer>().material;
+        float spikeProgress = 0;
+        while( spikeProgress < 1)
+        {
+            mat.SetFloat("_SpikeAmount",spikeProgress);
+            spikeProgress += Time.deltaTime * 2;
+            yield return null;
+        }
+        tm.RemoveTile(this);
     }
 }

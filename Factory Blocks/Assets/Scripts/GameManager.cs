@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
     public GameObject generalPopupPrefab;
     public LoadingOverlay loadingOverlay;
+    Level tempState;
     public struct LevelLocation
     {
         public Level level;
@@ -107,21 +108,74 @@ public class GameManager : MonoBehaviour
         string path = Application.persistentDataPath + "/levels/" + string.Format(@"{0}.json", Guid.NewGuid());
         if (LevelNameTaken(levelMap.name))
         {
-            LevelLocation toRemove = levels.First(element => element.level.name == levelMap.name);
-            levels.Remove(toRemove);
-            if (File.Exists(toRemove.path)){
-                File.Delete(toRemove.path);
-            }
-            if (File.Exists(Application.persistentDataPath + "/thumbnails/" + toRemove.level.name + ".png"))
-            {
-                File.Delete(Application.persistentDataPath + "/thumbnails/" + toRemove.level.name + ".png");
-            }
+            DeleteLevel(levelMap);
         }
         File.WriteAllText(path, contents);
         levels.Add(new LevelLocation {
             level = levelMap,
             path = path
         });
+    }
+
+    public void SetTempState(Level levelMap)
+    {
+        tempState = levelMap;
+    }
+
+    public void SaveTempState(bool clear = false)
+    {
+        string path = Application.persistentDataPath + "/tempState.json";
+        if (File.Exists(path))
+        {
+            File.Delete(path);
+        }
+        if (!clear)
+        {
+            string contents = JsonUtility.ToJson(tempState, true);
+            File.WriteAllText(path, contents);
+        }
+    }
+
+    public void Continue()
+    {
+        LoadScene(1,TempState());
+    }
+
+    Level TempState()
+    {
+        string path = Application.persistentDataPath + "/tempState.json";
+        if (File.Exists(path))
+        {
+            string contents = File.ReadAllText(path);
+            return JsonUtility.FromJson<Level>(contents);
+        }
+        return null;
+    }
+
+    public bool CanContinue()
+    {
+        Level t = TempState();
+        if (t == null) { return false; }
+
+        return LevelNameTaken(t.realLevelName);
+    }
+
+    public void DeleteLevel(Level level)
+    {
+        LevelLocation toRemove = levels.First(element => element.level.name == level.name);
+        levels.Remove(toRemove);
+        if (File.Exists(toRemove.path))
+        {
+            File.Delete(toRemove.path);
+        }
+        if (File.Exists(Application.persistentDataPath + "/thumbnails/" + toRemove.level.name + ".png"))
+        {
+            File.Delete(Application.persistentDataPath + "/thumbnails/" + toRemove.level.name + ".png");
+        }
+        if (TempState() != null && TempState().realLevelName.Equals(toRemove.level.name))
+        {
+            File.Delete(Application.persistentDataPath + "/tempState.json");
+        }
     }
 
     public void UpdateBestMoves(int moves, String levelName)

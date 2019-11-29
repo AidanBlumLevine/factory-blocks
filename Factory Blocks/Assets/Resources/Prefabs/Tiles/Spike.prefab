@@ -92,7 +92,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9774e1fb46997de43857b3005ffdf576, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  texture: {fileID: 2800000, guid: fcef24832038d984aaa829ab35ccc964, type: 3}
+  texture: {fileID: 2800000, guid: 3e9b989ec19b6a94a806d0b8a5b7ce20, type: 3}
   globalGroup: 1
   kinetic: 0
   rotateMid: 0

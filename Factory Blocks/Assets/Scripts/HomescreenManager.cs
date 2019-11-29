@@ -1,9 +1,11 @@
 ﻿using System.IO;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class HomescreenManager : MonoBehaviour
 {
     public static HomescreenManager Instance;
+    public GameObject continueButton;
     void Awake()
     {
         if (Instance == null)
@@ -21,6 +23,7 @@ public class HomescreenManager : MonoBehaviour
     void Start()
     {
         gm = GameManager.Instance;
+        continueButton.SetActive(gm.CanContinue());
     }
 
     public void Play()
@@ -30,7 +33,7 @@ public class HomescreenManager : MonoBehaviour
 
     public void Continue()
     {
-        //gm.Continue();
+        gm.Continue();
     }
 
     public void Edit()

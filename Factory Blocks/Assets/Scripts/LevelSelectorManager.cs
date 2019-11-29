@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class LevelSelectorManager : MonoBehaviour
@@ -20,6 +21,7 @@ public class LevelSelectorManager : MonoBehaviour
 
     public GameObject levelListCustom, levelList, levelPlayPrefab;
     public Animator customSwitch;
+    public GameObject canvasRoot;
     GameManager gm;
     float width, height;
     Vector2 center;
@@ -43,16 +45,29 @@ public class LevelSelectorManager : MonoBehaviour
         }
         customSwitch.SetBool("customShown", custom);
 
+        List<Level> permLevels = new List<Level>();
+        List<Level> customLevels = new List<Level>();
         foreach (GameManager.LevelLocation l in gm.levels)
         {
-            if (l.level.permanent)
+            if(l.level.permanent)
             {
-                Instantiate(levelPlayPrefab, levelList.transform).GetComponent<LevelPreview>().Set(l.level);
+                permLevels.Add(l.level);
             }
             else
             {
-                Instantiate(levelPlayPrefab, levelListCustom.transform).GetComponent<LevelPreview>().Set(l.level);
+                customLevels.Add(l.level);
             }
+        }
+        permLevels.Sort((f, l) => int.Parse(f.name).CompareTo(int.Parse(l.name)));
+        customLevels.Sort((f, l) => f.name.CompareTo(l.name));
+
+        foreach (Level l in permLevels)
+        {
+            Instantiate(levelPlayPrefab, levelList.transform).GetComponent<LevelPreview>().Set(l);
+        }
+        foreach (Level l in customLevels)
+        {
+            Instantiate(levelPlayPrefab, levelListCustom.transform).GetComponent<LevelPreview>().Set(l);
         }
     }
 

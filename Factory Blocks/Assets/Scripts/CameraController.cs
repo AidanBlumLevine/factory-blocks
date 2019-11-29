@@ -54,16 +54,17 @@ public class CameraController : MonoBehaviour
             Vector2Int center = new Vector2Int(Screen.width / 2, Screen.height / 2);
             int width = (int)screenSquareWidth;
             int startX = center.x - width / 2;
-            int startY = center.y - (int)(screenSquareWidth / 2 - yShift);
+            int startY = center.y - (int)(screenSquareWidth / 2 - yShift / 2);
             Texture2D tex = new Texture2D(width, width, TextureFormat.ARGB32, false);
 
             Rect rex = new Rect(startX, startY, width, width);
-            print(rex.ToString());
             tex.ReadPixels(rex, 0, 0);
             tex.Apply();
 
             byte[] bytes = tex.EncodeToPNG();
             Destroy(tex);
+
+            Loader.Instance.ClearLevelPreview(TileManager.Instance.loadedLevel.name);
             File.WriteAllBytes(Application.persistentDataPath + "/thumbnails/" + screenshotPath + ".png", bytes);
             screenshotPath = "";
         }

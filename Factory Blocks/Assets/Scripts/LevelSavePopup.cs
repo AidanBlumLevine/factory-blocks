@@ -50,10 +50,13 @@ public class LevelSavePopup : MonoBehaviour
 
     void SaveLevel()
     {
-        string name = levelName.text;
-        EditorManager.Instance.ResumeEditing(TileManager.Instance.SaveLevel(name));
-        anim.SetBool("Open", false);
-        Destroy(gameObject,.34f);
+        if (anim != null)
+        {
+            string name = levelName.text;
+            EditorManager.Instance.ResumeEditing(TileManager.Instance.SaveLevel(name));
+            anim.SetBool("Open", false);
+            Destroy(gameObject, .34f);
+        }
     }
 
     public void Cancel()

@@ -30,8 +30,7 @@ public class LevelPreview : MonoBehaviour
         {
             coinImg[3].sprite = emptyCoin;
         }
-        preview.sprite = Loader.Instance.PreviewLevel(l,(int)preview.rectTransform.rect.width);
-        preview.transform.position = new Vector3((int)preview.transform.position.x, (int)preview.transform.position.y, (int)preview.transform.position.z);
+        preview.sprite = Loader.Instance.PreviewLevel(l);
     }
 
     public void PlayLevel()
@@ -42,5 +41,17 @@ public class LevelPreview : MonoBehaviour
     public void EditLevel()
     {
         GameManager.Instance.LoadScene(2, level);
+    }
+
+    public void Delete()
+    {
+        Instantiate(GameManager.Instance.generalPopupPrefab, LevelSelectorManager.Instance.canvasRoot.transform).GetComponent<Popup>()
+                .Set("Delete level", "Are you sure?", "Yes", "No", DeleteLevel);
+    }
+
+    void DeleteLevel()
+    {
+        GameManager.Instance.DeleteLevel(level);
+        Destroy(gameObject);
     }
 }

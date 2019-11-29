@@ -40,11 +40,12 @@ public class EditorManager : MonoBehaviour
     {
         if (editing)
         {
-            Vector3 mp = Input.mousePosition;
+            Vector3 mp = Input.touches.Count() > 0 ? (Vector3)Input.touches[0].position : Input.mousePosition;
             mp.z = 0;
             mp = Camera.main.ScreenToWorldPoint(mp);
             Vector2Int gamePos = new Vector2Int((int)(mp.x + .5), (int)(mp.y + .5));
-            if (!waitUntilRelease && Input.GetMouseButton(0) && gamePos.x > 0 && gamePos.x < levelSize - 1 && gamePos.y > 0 && gamePos.y < levelSize - 1)
+
+            if (editing && !waitUntilRelease && (Input.GetMouseButton(0) || Input.touches.Count() > 0) && gamePos.x > 0 && gamePos.x < levelSize - 1 && gamePos.y > 0 && gamePos.y < levelSize - 1)
             {
                 if (selecting)
                 {
@@ -128,6 +129,12 @@ public class EditorManager : MonoBehaviour
         if (!saved)
         {
             Instantiate(savePopup, canvasRoot.transform);
+            while(selection.Count > 0)
+            {
+                Tile temp = selection[0];
+                selection.Remove(temp);
+                Destroy(temp.gameObject);
+            }
             editing = false;
         } else
         {
@@ -142,6 +149,7 @@ public class EditorManager : MonoBehaviour
         level = l;
         saved = true;
         SavePlay.SetBool("SaveShown", false);
+        nextID = TileManager.Instance.LargestID() + 1;
     }
 
     void SetWall(int width, int height)
@@ -253,7 +261,7 @@ public class EditorManager : MonoBehaviour
         saved = false;
         foreach (Tile s in selection)
         {
-            if (tm.GetTile(s.pos) == null)
+            if (tm.GetTile(s.pos) == null && tm.GetBGTile(s.pos) == null)
             {
                 Level.block b = new Level.block
                 {
@@ -293,6 +301,7 @@ public class EditorManager : MonoBehaviour
                             pos = s.pos
                         };
                         tm.AddTile(b);
+                        b.isMaster = false;
                         tm.GetBGTile(s.pos).SetMaster(tm.GetTile(s.pos + dir));
                         tm.GetTile(s.pos + dir).AddSlave(tm.GetBGTile(s.pos));
                         tm.GetTile(s.pos + dir).SetSprite();
