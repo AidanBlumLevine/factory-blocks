@@ -17,30 +17,21 @@ public class Loader : MonoBehaviour
         }
     }
 
-    List<TileTexturePackage> tileTextures = new List<TileTexturePackage>();
+    /*List<TileTexturePackage> tileTextures = new List<TileTexturePackage>();
     struct TileTexturePackage
     {
         public int tileType;
         public NamedTexture[] textures;
-    }
+    }*/
+    Dictionary<string, Sprite> tileSpriteList = new Dictionary<string, Sprite>();
     Dictionary<string, Sprite> spriteList = new Dictionary<string, Sprite>();
-    struct NamedTexture
+    /*struct NamedTexture
     {
         public Texture2D tex;
         public string name;
-    }
+    }*/
 
-    public Texture2D FetchTexture(int type, string name)
-    {
-        foreach (NamedTexture n in FetchTileTextures(type))
-        {
-            if (n.name.Equals(name))
-            {
-                return n.tex;
-            }
-        }
-        return null;
-    }
+    
 
     public Sprite PreviewLevel(Level l)
     {
@@ -58,12 +49,39 @@ public class Loader : MonoBehaviour
         return null;
     }
 
+    public Sprite TileSprite(int type, string imgName)
+    {
+        if (tileSpriteList.ContainsKey(type + imgName))
+        {
+            return tileSpriteList[type + imgName];
+        }
+        Sprite s = Resources.Load<Sprite>("Tiles/tile" + type + "/" + imgName);
+        if (s == null)
+        {
+            print("no sprite found at " + "Tiles/tile" + type + "/" + imgName);
+        }
+        tileSpriteList.Add(type + imgName, s);
+        return s;
+    }
+
     public void ClearLevelPreview(string name)
     {
         if (spriteList.ContainsKey(name))
         {
             spriteList.Remove(name);
         }
+    }
+
+   /* public Texture2D FetchTexture(int type, string name)
+    {
+        foreach (NamedTexture n in FetchTileTextures(type))
+        {
+            if (n.name.Equals(name))
+            {
+                return n.tex;
+            }
+        }
+        return null;
     }
 
     NamedTexture[] FetchTileTextures(int type)
@@ -101,7 +119,7 @@ public class Loader : MonoBehaviour
             }
         }
         return null;
-    }
+    }*/
 
     public static Texture2D LoadPNG(string filePath)
     {

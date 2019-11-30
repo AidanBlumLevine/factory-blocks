@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class CoinSlider : MonoBehaviour
@@ -71,6 +72,17 @@ public class CoinSlider : MonoBehaviour
         if (moves > c1) { coin1.sprite = failedCoin; }
         if (moves > c2) { coin2.sprite = failedCoin; }
         if (moves > c3) { coin3.sprite = failedCoin; }
+        }
+    }
+
+    IEnumerator Slide(GameObject toMove, Vector3 localPos)
+    {
+        float speed = 2;
+        while(toMove.transform.localPosition != localPos)
+        {
+            toMove.transform.localPosition = Vector3.MoveTowards(toMove.transform.localPosition, localPos, speed * Time.deltaTime);
+            speed += Time.deltaTime * 5;
+            yield return null;
         }
     }
 }

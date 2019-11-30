@@ -6,17 +6,18 @@ using UnityEngine;
 
 public class Tile : MonoBehaviour
 {
-    static int nextID = 0;
-    static List<CompiledSprite> spriteCache = new List<CompiledSprite>();
     static List<Tile> globalLinkGroup = new List<Tile>();
-    struct CompiledSprite
+    //static int nextID = 0;
+    //static List<CompiledSprite> spriteCache = new List<CompiledSprite>();
+    /*struct CompiledSprite
     {
         public string situation; //8 binary digets and then tile type
         public Sprite sprite;
-    }
+    }*/
 
     public Texture2D texture;
-    public bool globalGroup = false, kinetic = true, rotateMid = false;
+    public bool globalGroup = false, kinetic = true;
+    //public bool rotateMid = false;
     public int type;
     float startingMoveSpeed = 10, acceleration = 50;
     public int[] ignoredCollisionTypes = new int[] { 4 };
@@ -28,28 +29,28 @@ public class Tile : MonoBehaviour
     TileManager tm;
     SpriteRenderer sr;
 
-    Sprite[] sprites;
+    //Sprite[] sprites;
     bool isMaster = true;
     Tile master;
     List<Tile> slaves = new List<Tile>();
     float moveSpeed = 0;
-    bool merging = false; //only one merge at once
-    bool flipX = false;
-    bool flipY = false;
+    //bool merging = false; //only one merge at once
+    //bool flipX = false;
+    //bool flipY = false;
     bool dead = false; 
 
     void Awake()
     {
-        ID = nextID;
-        nextID++;
-        sprites = Resources.LoadAll<Sprite>("TileSheets/" + texture.name);
+        //ID = nextID;
+        //nextID++;
+        //sprites = Resources.LoadAll<Sprite>("TileSheets/" + texture.name);
         sr = GetComponent<SpriteRenderer>();
         tm = TileManager.Instance;
-        if (rotateMid)
+        /*if (rotateMid)
         {
             flipX = Random.value > .5;
             flipY = Random.value > .5;
-        }
+        }*/
         if (globalGroup)
         {
             globalLinkGroup.Add(this);
@@ -278,7 +279,7 @@ public class Tile : MonoBehaviour
 
     void GetSprite(bool[] atp) //sets sprite, takes in 8 bools starting top left going clockwise for if there is a mergable tile
     {
-        string situationName = type + "_";
+        //string situationName = type + "_";
         string imgName = "";
 
         List<int> spritesToMerge = new List<int>();
@@ -315,9 +316,13 @@ public class Tile : MonoBehaviour
             if (atp[5] && atp[7] && atp[6]) { spritesToMerge.Add(28); }
         }
 
-        foreach (int b in spritesToMerge) { situationName += b+","; imgName += b + "-"; }
+        foreach (int b in spritesToMerge) {
+            //situationName += b+",";
+            imgName += b + "-";
+        }
+        sr.sprite = Loader.Instance.TileSprite(type, imgName);
 
-        CompiledSprite fetched = spriteCache.FirstOrDefault(element => element.situation.Equals(situationName));
+        /*CompiledSprite fetched = spriteCache.FirstOrDefault(element => element.situation.Equals(situationName));
         if (fetched.sprite != null)
         {
             sr.sprite = fetched.sprite;
@@ -338,11 +343,11 @@ public class Tile : MonoBehaviour
             {
                 MergeSprites(spritesToMerge, situationName,imgName);
             }
-        }
+        }*/
     }
 
     //TODO it saves the old merge not the new one so spamming will leave you with out of date sprites
-    void MergeSprites(List<int> spriteIndexes,string situationName,string imgName)
+    /*void MergeSprites(List<int> spriteIndexes,string situationName,string imgName)
     {
         merging = true;
         Texture2D tex = new Texture2D((int)sprites[0].rect.width, (int)sprites[0].rect.height,TextureFormat.ARGB32,false);
@@ -391,7 +396,7 @@ public class Tile : MonoBehaviour
             sprite = sr.sprite
         });
         merging = false;
-    }
+    }*/
     public void RemoveFromGlobal()
     {
         globalLinkGroup.Remove(this);
