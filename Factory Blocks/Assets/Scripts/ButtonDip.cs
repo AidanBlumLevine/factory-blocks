@@ -6,17 +6,24 @@ using UnityEngine.UI;
 
 public class ButtonDip : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPointerExitHandler
 {
-    GameObject toDip;
+    GameObject[] toDip;
     float dipAmount = 5;
     bool down;
     void Start()
     {
-        toDip = transform.GetChild(0).gameObject;
+        toDip = new GameObject[transform.childCount];
+        for(int i =0; i < transform.childCount; i++)
+        {
+            toDip[i] = transform.GetChild(i).gameObject;
+        }
     }
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        toDip.transform.position -= new Vector3(0, dipAmount);
+        foreach (GameObject g in toDip)
+        {
+            g.transform.position -= new Vector3(0, dipAmount);
+        }
         down = true;
     }
 
@@ -24,7 +31,10 @@ public class ButtonDip : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, 
     {
         if (down)
         {
-            toDip.transform.position += new Vector3(0, dipAmount);
+            foreach (GameObject g in toDip)
+            {
+                g.transform.position += new Vector3(0, dipAmount);
+            }
             down = false;
         }
     }
@@ -33,7 +43,10 @@ public class ButtonDip : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, 
     {
         if (down)
         {
-            toDip.transform.position += new Vector3(0, dipAmount);
+            foreach (GameObject g in toDip)
+            {
+                g.transform.position += new Vector3(0, dipAmount);
+            }
             down = false;
         }
         EventSystem.current.SetSelectedGameObject(null);

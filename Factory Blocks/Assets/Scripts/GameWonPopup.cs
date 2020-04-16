@@ -26,8 +26,7 @@ public class GameWonPopup : MonoBehaviour
 
     public void Won(Level level, int moves)
     {
-        print(moves);
-        next.enabled = level.permanent;
+        next.gameObject.SetActive(level.permanent);
         if (level.permanent)
         {
             nextName = (int.Parse(level.name) + 1) + "";
@@ -69,7 +68,7 @@ public class GameWonPopup : MonoBehaviour
 
     public void Next()
     {
-        GameManager.Instance.LoadScene(1, GameManager.Instance.levels.First(e => e.level.name.Equals(nextName)).level);
+        GameManager.Instance.LoadScene(1, GameManager.Instance.permanentLevels.First(e => e.name.Equals(nextName)));
     }
 
     //EASE STUFF

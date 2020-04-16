@@ -9,6 +9,7 @@ public class LevelPreview : MonoBehaviour
     public Image preview;
     public Text title;
     public GameObject edit;
+    public Text best;
     public GameObject coins;
     public Sprite emptyCoin;
     public void Set(Level l)
@@ -18,15 +19,17 @@ public class LevelPreview : MonoBehaviour
         edit.SetActive(!l.permanent);
         coins.SetActive(l.permanent);
         Image[] coinImg = coins.GetComponentsInChildren<Image>();
-        if (level.bestMoves > level.stars[0])
+        int bestMoves = GameManager.Instance.BestMoves(level);
+        best.text = bestMoves > 9999 ? "---" : bestMoves + "";
+        if (bestMoves > level.stars[0])
         {
             coinImg[1].sprite = emptyCoin;
         }
-        if (level.bestMoves > level.stars[1])
+        if (bestMoves > level.stars[1])
         {
             coinImg[2].sprite = emptyCoin;
         }
-        if (level.bestMoves > level.stars[2])
+        if (bestMoves > level.stars[2])
         {
             coinImg[3].sprite = emptyCoin;
         }

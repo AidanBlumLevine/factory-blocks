@@ -8,11 +8,16 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public List<LevelLocation> levels { get; private set; }
+    public List<LevelLocation> customLevels { get; private set; }
+    public List<Level> permanentLevels { get; private set; }
+    public List<Level> levels { get; private set; }
+    Dictionary<Level, int> bestMoves = new Dictionary<Level, int>();
+
     public static GameManager Instance;
     public GameObject generalPopupPrefab;
     public LoadingOverlay loadingOverlay;
     Level tempState;
+    BestMoves bestMovesLoadedState;
     public struct LevelLocation
     {
         public Level level;
@@ -29,27 +34,65 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        levels = new List<LevelLocation>();
+
+        levels = new List<Level>();
+        //Load Custom Levels
+        customLevels = new List<LevelLocation>();
         if (!Directory.Exists(Application.persistentDataPath + "/levels/"))
         {
             Directory.CreateDirectory(Application.persistentDataPath + "/levels/");
-            Directory.CreateDirectory(Application.persistentDataPath + "/thumbnails/");
+            Directory.CreateDirectory(Application.persistentDataPath + "/thumbnails/");            
         }
         DirectoryInfo dir = new DirectoryInfo(Application.persistentDataPath + "/levels/");
         FileInfo[] info = dir.GetFiles("*.json");
         foreach (FileInfo f in info)
         {
             string contents = File.ReadAllText(Application.persistentDataPath + "/levels/" + f.Name);
-            levels.Add(new LevelLocation {
+            customLevels.Add(new LevelLocation {
                 level = JsonUtility.FromJson<Level>(contents),
                 path = f.FullName
             });
+            levels.Add(customLevels[customLevels.Count - 1].level);
+        }
+
+        //Permanent levels
+        permanentLevels = new List<Level>();
+        TextAsset[] t = Resources.LoadAll<TextAsset>("Levels");
+        foreach (TextAsset a in t)
+        {
+            permanentLevels.Add(JsonUtility.FromJson<Level>(a.text));
+        }
+        levels.AddRange(permanentLevels);
+
+
+
+        //Best Moves
+        if (!File.Exists(Application.persistentDataPath + "/progress.json"))
+        {
+            BestMoves toAdd = new BestMoves();
+            string contents = JsonUtility.ToJson(toAdd, true);
+            File.WriteAllText(Application.persistentDataPath + "/progress.json", contents);
+        }
+        //Load Best Moves
+        string bestMovesText = File.ReadAllText(Application.persistentDataPath + "/progress.json");
+        bestMovesLoadedState = JsonUtility.FromJson<BestMoves>(bestMovesText);
+        foreach (Level l in levels)
+        {
+            int moves = 999999;
+            foreach(BestMoves.LevelNum lm in bestMovesLoadedState.levels)
+            {
+                if(lm.permanent == l.permanent && lm.name.Equals(l.name))
+                {
+                    moves = lm.bestMoves;
+                }
+            }
+            bestMoves.Add(l, moves);
         }
     }
 
     public bool LevelNameTaken(string n)
     {
-        foreach(LevelLocation l in levels)
+        foreach(LevelLocation l in customLevels)
         {
             if (l.level.name.Equals(n))
             {
@@ -111,10 +154,11 @@ public class GameManager : MonoBehaviour
             DeleteLevel(levelMap);
         }
         File.WriteAllText(path, contents);
-        levels.Add(new LevelLocation {
+        customLevels.Add(new LevelLocation {
             level = levelMap,
             path = path
         });
+        bestMoves.Add(levelMap, 999999);
     }
 
     public void SetTempState(Level levelMap)
@@ -162,8 +206,8 @@ public class GameManager : MonoBehaviour
 
     public void DeleteLevel(Level level)
     {
-        LevelLocation toRemove = levels.First(element => element.level.name == level.name);
-        levels.Remove(toRemove);
+        LevelLocation toRemove = customLevels.First(element => element.level.name == level.name);
+        customLevels.Remove(toRemove);
         if (File.Exists(toRemove.path))
         {
             File.Delete(toRemove.path);
@@ -176,13 +220,59 @@ public class GameManager : MonoBehaviour
         {
             File.Delete(Application.persistentDataPath + "/tempState.json");
         }
+        DeleteBestMoves(level);
     }
 
-    public void UpdateBestMoves(int moves, String levelName)
+    public void UpdateBestMoves(int moves, Level l)
     {
-        LevelLocation editedLevelInfo = levels.First(element => element.level.name == levelName);
-        editedLevelInfo.level.bestMoves = moves;
-        File.Delete(editedLevelInfo.path);
-        File.WriteAllText(editedLevelInfo.path, JsonUtility.ToJson(editedLevelInfo.level, true));
+        bestMoves[l] = moves;
+        bool exists = false;
+        for(int i = 0; i < bestMovesLoadedState.levels.Count(); i++) 
+        { 
+            BestMoves.LevelNum lm = bestMovesLoadedState.levels[i];
+            if (lm.permanent == l.permanent && lm.name.Equals(l.name))
+            {
+                exists = true;
+                bestMovesLoadedState.levels[i].bestMoves = moves;
+            }
+        }
+        if (!exists)
+        {
+            List<BestMoves.LevelNum> temp = new List<BestMoves.LevelNum>(bestMovesLoadedState.levels);
+            temp.Add(new BestMoves.LevelNum
+            {
+                bestMoves = moves,
+                permanent = l.permanent,
+                name = l.name
+            });
+            bestMovesLoadedState.levels = temp.ToArray();
+        }
+        File.Delete(Application.persistentDataPath + "/progress.json");
+        string contents = JsonUtility.ToJson(bestMovesLoadedState, true);
+        File.WriteAllText(Application.persistentDataPath + "/progress.json", contents);
+    }
+
+    void DeleteBestMoves(Level l)
+    {
+        List<BestMoves.LevelNum> temp = new List<BestMoves.LevelNum>(bestMovesLoadedState.levels);
+        BestMoves.LevelNum toDelete = default(BestMoves.LevelNum);
+        foreach (BestMoves.LevelNum lm in bestMovesLoadedState.levels)
+        {
+            if (lm.permanent == l.permanent && lm.name.Equals(l.name))
+            {
+                toDelete = lm;
+            }
+        }
+        temp.Remove(toDelete);
+        bestMoves.Remove(l);
+        bestMovesLoadedState.levels = temp.ToArray();
+        File.Delete(Application.persistentDataPath + "/progress.json");
+        string contents = JsonUtility.ToJson(bestMovesLoadedState, true);
+        File.WriteAllText(Application.persistentDataPath + "/progress.json", contents);
+    }
+
+    public int BestMoves(Level l)
+    {
+        return bestMoves[l];
     }
 }

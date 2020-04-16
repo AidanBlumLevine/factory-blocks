@@ -45,7 +45,7 @@ public class EditorManager : MonoBehaviour
             mp = Camera.main.ScreenToWorldPoint(mp);
             Vector2Int gamePos = new Vector2Int((int)(mp.x + .5), (int)(mp.y + .5));
 
-            if (editing && !waitUntilRelease && (Input.GetMouseButton(0) || Input.touches.Count() > 0) && gamePos.x > 0 && gamePos.x < levelSize - 1 && gamePos.y > 0 && gamePos.y < levelSize - 1)
+            if (!waitUntilRelease && (Input.GetMouseButton(0) || Input.touches.Count() > 0) && gamePos.x > 0 && gamePos.x < levelSize - 1 && gamePos.y > 0 && gamePos.y < levelSize - 1)
             {
                 if (selecting)
                 {
@@ -71,7 +71,7 @@ public class EditorManager : MonoBehaviour
                     }
                 }
             }
-            if (waitUntilRelease && !Input.GetMouseButton(0))
+            if (waitUntilRelease && (!Input.GetMouseButton(0) && Input.touches.Count() == 0))
             {
                 waitUntilRelease = false;
             }
@@ -114,6 +114,7 @@ public class EditorManager : MonoBehaviour
             saved = true;
         }
         editing = true;
+        waitUntilRelease = true;
     }
 
     void UpdateSelectionSprites()
@@ -129,16 +130,21 @@ public class EditorManager : MonoBehaviour
         if (!saved)
         {
             Instantiate(savePopup, canvasRoot.transform);
-            while(selection.Count > 0)
-            {
-                Tile temp = selection[0];
-                selection.Remove(temp);
-                Destroy(temp.gameObject);
-            }
+            UnSelect();
             editing = false;
         } else
         {
             GameManager.Instance.LoadScene(1, level);
+        }
+    }
+
+    public void UnSelect()
+    {
+        while (selection.Count > 0)
+        {
+            Tile temp = selection[0];
+            selection.Remove(temp);
+            Destroy(temp.gameObject);
         }
     }
 

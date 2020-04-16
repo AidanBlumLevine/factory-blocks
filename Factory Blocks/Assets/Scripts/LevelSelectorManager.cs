@@ -47,16 +47,13 @@ public class LevelSelectorManager : MonoBehaviour
 
         List<Level> permLevels = new List<Level>();
         List<Level> customLevels = new List<Level>();
-        foreach (GameManager.LevelLocation l in gm.levels)
+        foreach (Level l in gm.permanentLevels)
         {
-            if(l.level.permanent)
-            {
-                permLevels.Add(l.level);
-            }
-            else
-            {
-                customLevels.Add(l.level);
-            }
+            permLevels.Add(l);
+        }
+        foreach (GameManager.LevelLocation l in gm.customLevels)
+        {
+            customLevels.Add(l.level);
         }
         permLevels.Sort((f, l) => int.Parse(f.name).CompareTo(int.Parse(l.name)));
         customLevels.Sort((f, l) => f.name.CompareTo(l.name));

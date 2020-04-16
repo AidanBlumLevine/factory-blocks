@@ -35,15 +35,16 @@ public class CoinSlider : MonoBehaviour
             coin3.transform.GetChild(0).gameObject.SetActive(false);
             coin2.transform.GetChild(0).gameObject.SetActive(false);
             coin1.transform.GetChild(0).gameObject.SetActive(false);
-            if (l.bestMoves <= c3)
+            int bestMoves = GameManager.Instance.BestMoves(l);
+            if (bestMoves <= c3)
             {
                 coin3.transform.GetChild(0).gameObject.SetActive(true);
             }
-            else if (l.bestMoves <= c2)
+            else if (bestMoves <= c2)
             {
                 coin2.transform.GetChild(0).gameObject.SetActive(true);
             }
-            else if (l.bestMoves <= c1)
+            else if (bestMoves <= c1)
             {
                 coin1.transform.GetChild(0).gameObject.SetActive(true);
             }

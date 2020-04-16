@@ -35,15 +35,21 @@ public class Loader : MonoBehaviour
 
     public Sprite PreviewLevel(Level l)
     {
-        if (spriteList.ContainsKey(l.name))
+        if (spriteList.ContainsKey(l.name + l.permanent))
         {
-            return spriteList[l.name];
+            return spriteList[l.name + l.permanent];
         }
-        if (File.Exists(Application.persistentDataPath + "/thumbnails/" + l.name + ".png"))
+        if (l.permanent)
+        {
+            Sprite s = Resources.Load<Sprite>("Levels/"+l.name);
+            spriteList.Add(l.name + l.permanent, s);
+            return s;
+        }
+        else if (File.Exists(Application.persistentDataPath + "/thumbnails/" + l.name + ".png"))
         {
             Texture2D tex = LoadPNG(Application.persistentDataPath + "/thumbnails/" + l.name + ".png");
             Sprite s = Sprite.Create(tex, new Rect(0, 0, tex.width, tex.height), new Vector2(.5f, .5f), tex.width);
-            spriteList.Add(l.name, s);
+            spriteList.Add(l.name + l.permanent, s);
             return s;
         }
         return null;

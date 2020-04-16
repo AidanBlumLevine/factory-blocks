@@ -24,6 +24,7 @@ public class TileManager : MonoBehaviour
     int width, height, moves;
     List<Tile> tiles = new List<Tile>();
     List<Tile> goalBlocks = new List<Tile>();
+    int goalsNeeded;
     bool lastStill = true;
     Tile[,][] level;
     public Level loadedLevel { get; private set; }
@@ -34,9 +35,9 @@ public class TileManager : MonoBehaviour
 
     void Update()
     {
-        if (Still() && !lastStill && EditorManager.Instance == null) //idk if the last part is necessary
+        if (Still() && !lastStill && EditorManager.Instance == null && !won) //idk if the last part is necessary
         {
-            won = goalBlocks.Count > 0;
+            won = goalBlocks.Count == goalsNeeded;
             for (int i = 0; i<goalBlocks.Count;i++)
             {
                 Tile t = goalBlocks[i];
@@ -53,9 +54,9 @@ public class TileManager : MonoBehaviour
 
             if(won)
             {
-                if (loadedLevel.permanent && loadedLevel.bestMoves > moves)
+                if (GameManager.Instance.BestMoves(loadedLevel) > moves)
                 {
-                    GameManager.Instance.UpdateBestMoves(moves, loadedLevel.name);
+                    GameManager.Instance.UpdateBestMoves(moves, loadedLevel);
                 }
                 wonPopup.Won(loadedLevel, moves);
             }
@@ -123,6 +124,7 @@ public class TileManager : MonoBehaviour
             RemoveTile(tiles[0]);
         }
         level = new Tile[width, height][];
+        goalsNeeded = 0;
         goalBlocks.Clear();
         won = false;
 
@@ -151,7 +153,7 @@ public class TileManager : MonoBehaviour
 
         if (loadedLevel.realLevelName != null && !loadedLevel.realLevelName.Equals(""))
         {
-            loadedLevel = GameManager.Instance.levels.First(l => l.level.name.Equals(loadedLevel.realLevelName)).level;
+            loadedLevel = GameManager.Instance.levels.First(l => l.name.Equals(loadedLevel.realLevelName));
         }
     }
 
@@ -178,6 +180,7 @@ public class TileManager : MonoBehaviour
         if(t.type == 2)
         {
             goalBlocks.Add(t);
+            goalsNeeded++;
         }
     }
 
