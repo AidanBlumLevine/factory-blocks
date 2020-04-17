@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
     public GameObject generalPopupPrefab;
     public LoadingOverlay loadingOverlay;
+
     Level tempState;
     BestMoves bestMovesLoadedState;
     public struct LevelLocation
@@ -114,11 +115,12 @@ public class GameManager : MonoBehaviour
         float startTime = Time.time;
         AsyncOperation operation = SceneManager.LoadSceneAsync(sceneIndex);
         operation.allowSceneActivation = false;
-        while (operation.progress < 0.89 || loadingOverlay.Moving || Time.time - startTime < 1.5f)// ||  (force load)
+        while (operation.progress < 0.89 || loadingOverlay.Moving)// || Time.time - startTime < 1.5f (force load)
         {
             yield return null;
         }
         operation.allowSceneActivation = true;
+        loadingOverlay.Hide(dir);
         yield return null;
         if (level != null)
         {
@@ -131,7 +133,6 @@ public class GameManager : MonoBehaviour
                 EditorManager.Instance.LoadLevel(level);
             }
         }
-        loadingOverlay.Hide(dir);
     }
 
     Vector2 TransitionDir(int from, int to)
@@ -198,6 +199,13 @@ public class GameManager : MonoBehaviour
         if (t == null) { return false; }
 
         return LevelNameTaken(t.realLevelName);
+    }
+
+    internal string ContinueName()
+    {
+        Level t = TempState();
+        if (t == null) { return ""; }
+        return t.realLevelName;
     }
 
     public void DeleteLevel(Level level)

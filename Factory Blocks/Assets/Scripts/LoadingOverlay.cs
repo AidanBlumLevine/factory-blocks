@@ -60,6 +60,7 @@ public class LoadingOverlay : MonoBehaviour
         time -= 2;
         return c / 2 * (time * time * time + 2) + startPos;
     }
+
     Vector2 Ease(Vector2 startPos, Vector2 endPos, float time, float duration, bool accelerateIn)
     {
         Vector2 c = endPos - startPos;

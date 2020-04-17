@@ -12,6 +12,7 @@ public class LevelPreview : MonoBehaviour
     public Text best;
     public GameObject coins;
     public Sprite emptyCoin;
+    Animator anim;
     public void Set(Level l)
     {
         level = l;
@@ -34,11 +35,13 @@ public class LevelPreview : MonoBehaviour
             coinImg[3].sprite = emptyCoin;
         }
         preview.sprite = Loader.Instance.PreviewLevel(l);
+        anim = GetComponent<Animator>();
     }
 
     public void PlayLevel()
     {
         GameManager.Instance.LoadScene(1, level);
+        //anim.SetTrigger("Open");
     }
 
     public void EditLevel()

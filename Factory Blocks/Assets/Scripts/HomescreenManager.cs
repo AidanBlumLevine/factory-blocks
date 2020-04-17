@@ -6,6 +6,7 @@ public class HomescreenManager : MonoBehaviour
 {
     public static HomescreenManager Instance;
     public GameObject continueButton;
+    public Text continueName;
     void Awake()
     {
         if (Instance == null)
@@ -24,6 +25,7 @@ public class HomescreenManager : MonoBehaviour
     {
         gm = GameManager.Instance;
         continueButton.SetActive(gm.CanContinue());
+        continueName.text = gm.ContinueName();
     }
 
     public void Play()
