@@ -20,7 +20,7 @@ public class LoadingOverlay : MonoBehaviour
 
     void Update()
     {
-        anim.SetFloat("loading", loadingSpeed);
+        anim.SetFloat("loading", loadingSpeed * 0.5f + .5f);
         loadingSpeed = Mathf.Lerp(loadingSpeed, (Vector2)transform.position == center ? 1 : 0, Time.deltaTime * 3);
     }
 
@@ -28,23 +28,24 @@ public class LoadingOverlay : MonoBehaviour
     {
         anim.SetTrigger("reset");
         Vector2 startPos = center - new Vector2(dir.x * width,dir.y * height);
-        StartCoroutine(EaseTo(startPos, center));
+        StartCoroutine(EaseTo(startPos, center,true));
     }
 
     public void Hide(Vector2 dir)
     {
         Vector2 endPos = center + new Vector2(dir.x * width, dir.y * height);
-        StartCoroutine(EaseTo(center, endPos));
+        StartCoroutine(EaseTo(center, endPos,false));
     }
 
-    IEnumerator EaseTo(Vector2 start, Vector2 end)
+    IEnumerator EaseTo(Vector2 start, Vector2 end,bool accelerateIn)
     {
         Moving = true;
         float time = 0;
         while(time < easeDuration)
         {
+            transform.position = Ease(start, end, time, easeDuration,accelerateIn);
             time += Time.deltaTime;
-            transform.position = Ease(start, end, time, easeDuration);
+
             yield return null;
         }
         transform.position = end;
@@ -58,5 +59,16 @@ public class LoadingOverlay : MonoBehaviour
         if (time < 1) return c / 2 * time * time * time + startPos;
         time -= 2;
         return c / 2 * (time * time * time + 2) + startPos;
+    }
+    Vector2 Ease(Vector2 startPos, Vector2 endPos, float time, float duration, bool accelerateIn)
+    {
+        Vector2 c = endPos - startPos;
+        time /= duration;
+        if (!accelerateIn)
+        {
+            time = 1 - time;
+            return endPos - c * time * time * time * time;
+        }
+        return startPos + c * time * time * time * time;
     }
 }

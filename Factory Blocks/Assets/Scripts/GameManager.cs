@@ -111,19 +111,15 @@ public class GameManager : MonoBehaviour
     {
         Vector2 dir = TransitionDir(SceneManager.GetActiveScene().buildIndex, sceneIndex);
         loadingOverlay.Show(dir);
-        while (loadingOverlay.Moving)
-        {
-            yield return null;
-        }
-
         float startTime = Time.time;
         AsyncOperation operation = SceneManager.LoadSceneAsync(sceneIndex);
-
-        while (!operation.isDone)// || Time.time - startTime < 1f (force load)
+        operation.allowSceneActivation = false;
+        while (operation.progress < 0.89 || loadingOverlay.Moving || Time.time - startTime < 1.5f)// ||  (force load)
         {
             yield return null;
         }
-
+        operation.allowSceneActivation = true;
+        yield return null;
         if (level != null)
         {
             if (sceneIndex == 1)
