@@ -91,13 +91,23 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public bool LevelNameTaken(string n)
+    public bool LevelNameTaken(string n, bool customOnly)
     {
         foreach(LevelLocation l in customLevels)
         {
             if (l.level.name.Equals(n))
             {
                 return true;
+            }
+        }
+        if (!customOnly)
+        {
+            foreach (Level l in permanentLevels)
+            {
+                if (l.name.Equals(n))
+                {
+                    return true;
+                }
             }
         }
         return false;
@@ -146,7 +156,7 @@ public class GameManager : MonoBehaviour
     {
         string contents = JsonUtility.ToJson(levelMap, true);
         string path = Application.persistentDataPath + "/levels/" + string.Format(@"{0}.json", Guid.NewGuid());
-        if (LevelNameTaken(levelMap.name))
+        if (LevelNameTaken(levelMap.name,true))
         {
             DeleteLevel(levelMap);
         }
@@ -198,7 +208,7 @@ public class GameManager : MonoBehaviour
         Level t = TempState();
         if (t == null) { return false; }
 
-        return LevelNameTaken(t.realLevelName);
+        return LevelNameTaken(t.realLevelName,false);
     }
 
     internal string ContinueName()

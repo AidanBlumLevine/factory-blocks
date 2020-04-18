@@ -37,10 +37,10 @@ public class LevelSavePopup : MonoBehaviour
             return;
         }
 
-        if (GameManager.Instance.LevelNameTaken(name))
+        if (GameManager.Instance.LevelNameTaken(name,true))
         {
             Instantiate(GameManager.Instance.generalPopupPrefab, EditorManager.Instance.canvasRoot.transform).GetComponent<Popup>()
-                .Set("LEVEL NAME TAKEN", "A LEVEL WITH THAT NAME ALREADY EXISTS. DO YOU WANT TO OVERWRITE "+ levelName.text +"?", "Yes", "No", SaveLevel,300,250);
+                .Set("LEVEL NAME TAKEN", "A LEVEL WITH THAT NAME ALREADY EXISTS. DO YOU WANT TO OVERWRITE "+ levelName.text +"?", "Yes", "No", SaveLevel, null, 300,250);
         }
         else
         {

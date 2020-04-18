@@ -32,7 +32,7 @@ public class CameraController : MonoBehaviour
             pixelPos = new Rect(Screen.width / 2 - screenSquareWidth / 2, Screen.height / 2 - yShift - screenSquareWidth / 2, screenSquareWidth, screenSquareWidth);
         }
         //TODO fix
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < 20; i++)
         {
             float pixelsPerUnit = cam.scaledPixelHeight / cam.orthographicSize;
             Vector3 centered = new Vector3(levelSize / 2.0f - .5f, (levelSize) / 2.0f - .5f, -10);

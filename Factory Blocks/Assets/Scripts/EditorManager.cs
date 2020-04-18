@@ -113,6 +113,10 @@ public class EditorManager : MonoBehaviour
             level = savedLevel;
             saved = true;
         }
+        ResumeEditing();
+    }
+    public void ResumeEditing()
+    {
         editing = true;
         waitUntilRelease = true;
     }
@@ -400,8 +404,9 @@ public class EditorManager : MonoBehaviour
     {
         if (!saved)
         {
+            editing = false;
             Instantiate(GameManager.Instance.generalPopupPrefab,canvasRoot.transform).GetComponent<Popup>()
-                .Set("Are you sure", "Level is not saved", "Yes", "No", QuitToHome);
+                .Set("Are you sure", "Level is not saved", "Yes", "No", QuitToHome, ResumeEditing);
         } else
         {
             QuitToHome();

@@ -1,11 +1,14 @@
-﻿using System.IO;
+using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class HomescreenManager : MonoBehaviour
 {
     public static HomescreenManager Instance;
-    public GameObject continueButton;
+    public Button continueButton;
+    public GameObject continueOverlay;
+    public GameObject continueTextbox;
+
     public Text continueName;
     void Awake()
     {
@@ -24,7 +27,9 @@ public class HomescreenManager : MonoBehaviour
     void Start()
     {
         gm = GameManager.Instance;
-        continueButton.SetActive(gm.CanContinue());
+        continueButton.interactable = gm.CanContinue();
+        continueOverlay.SetActive(!gm.CanContinue());
+        continueTextbox.SetActive(gm.CanContinue());
         continueName.text = gm.ContinueName();
     }
 

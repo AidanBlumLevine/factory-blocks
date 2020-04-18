@@ -113,8 +113,6 @@ public class TileManager : MonoBehaviour
     {
         loadedLevel = levelMap;
 
-        if(coins!=null)coins.Set(levelMap);
-
         moves = 0;
         width = levelMap.width;
         height = levelMap.height;
@@ -128,13 +126,13 @@ public class TileManager : MonoBehaviour
         goalBlocks.Clear();
         won = false;
 
-        foreach (Level.block b in levelMap.tiles)
+        foreach (Level.block b in loadedLevel.tiles)
         {
             AddTile(b);
         }
         foreach (Tile t in tiles)
         {
-            Level.block b = Array.Find(levelMap.tiles, element => element.tileID == t.ID);
+            Level.block b = Array.Find(loadedLevel.tiles, element => element.tileID == t.ID);
             if (b.isMaster)
             {
                 foreach (int s in b.slavesIDs)
@@ -154,6 +152,12 @@ public class TileManager : MonoBehaviour
         if (loadedLevel.realLevelName != null && !loadedLevel.realLevelName.Equals(""))
         {
             loadedLevel = GameManager.Instance.levels.First(l => l.name.Equals(loadedLevel.realLevelName));
+            moves = levelMap.stars[0];
+        }
+        if (coins != null)
+        {
+            coins.Set(loadedLevel);
+            coins.Set(moves);
         }
     }
 
@@ -259,6 +263,7 @@ public class TileManager : MonoBehaviour
                 moves++;
                 Level t = LevelState("tempStatus");
                 t.realLevelName = loadedLevel.name;
+                t.stars[0] = moves;
                 GameManager.Instance.SetTempState(t);
                 coins.Set(moves);
             }
