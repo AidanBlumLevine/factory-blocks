@@ -25,9 +25,11 @@ public class SpriteFormer : EditorWindow
         {
             if (GUILayout.Button("Go"))
             {
-                Directory.CreateDirectory("/Assets/Resources/Tiles/tile" + type + "/");
+                string dir = Directory.GetCurrentDirectory();
+                Directory.CreateDirectory(dir+"/Assets/Resources/Tiles/tile" + type + "/");
+                Debug.Log("Directory Created: /Assets/Resources/Tiles/tile" + type + "/");
                 sprites = Resources.LoadAll<Sprite>(tex.name);
-                GetSprite(new bool[] { true, true, true, true, true, true, true, true });
+                //GetSprite(new bool[] { true, true, true, true, true, true, true, true });
             }
         }
     }
@@ -100,8 +102,9 @@ public class SpriteFormer : EditorWindow
         }
         tex.SetPixels32(pixels);
         tex.Apply();
-        string path = "/Assets/Resources/Tiles/tile" + type + "/" + imgName + ".png";
-        if (Directory.Exists("/Assets/Resources/Tiles/tile" + type + "/") && !File.Exists(path))
+        string dir = Directory.GetCurrentDirectory();
+        string path = dir+"/Assets/Resources/Tiles/tile" + type + "/" + imgName + ".png";
+        if (Directory.Exists(dir+"/Assets/Resources/Tiles/tile" + type + "/") && !File.Exists(path))
         {
             File.WriteAllBytes(path, tex.EncodeToPNG());
         }

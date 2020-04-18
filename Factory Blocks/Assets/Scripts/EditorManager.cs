@@ -115,6 +115,7 @@ public class EditorManager : MonoBehaviour
         }
         ResumeEditing();
     }
+
     public void ResumeEditing()
     {
         editing = true;
