@@ -43,7 +43,6 @@ public class Tile : MonoBehaviour
     {
         //ID = nextID;
         //nextID++;
-        //sprites = Resources.LoadAll<Sprite>("TileSheets/" + texture.name);
         sr = GetComponent<SpriteRenderer>();
         tm = TileManager.Instance;
         /*if (rotateMid)

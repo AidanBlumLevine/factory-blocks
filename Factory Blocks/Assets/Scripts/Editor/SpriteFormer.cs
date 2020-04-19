@@ -25,60 +25,73 @@ public class SpriteFormer : EditorWindow
         {
             if (GUILayout.Button("Go"))
             {
+
                 string dir = Directory.GetCurrentDirectory();
                 Directory.CreateDirectory(dir+"/Assets/Resources/Tiles/tile" + type + "/");
                 Debug.Log("Directory Created: /Assets/Resources/Tiles/tile" + type + "/");
-                sprites = Resources.LoadAll<Sprite>(tex.name);
-                //GetSprite(new bool[] { true, true, true, true, true, true, true, true });
+                sprites = Resources.LoadAll<Sprite>("TileSheets/" + tex.name);
+                List<int[]> situations = new List<int[]>();
+                DirectoryInfo sourceDir = new DirectoryInfo(dir + "/Assets/Resources/Tiles/tile0");
+                FileInfo[] info = sourceDir.GetFiles("*.png");
+                foreach (FileInfo f in info)
+                {
+                    string[] split = f.Name.Split('-');
+                    int[] situation = new int[9];
+                    for(int i=0;i<9;i++)
+                    {
+                        situation[i] = int.Parse(split[i]);
+                    }
+                    situations.Add(situation);
+                }
+                foreach (int[] sit in situations)
+                {
+                    GetSprite(sit);
+                }
             }
         }
     }
 
-    void GetSprite(bool[] atp) //sets sprite, takes in 8 bools starting top left going clockwise for if there is a mergable tile
+    void GetSprite(int[] spritesToMerge) //sets sprite, takes in 8 bools starting top left going clockwise for if there is a mergable tile
     {
-        string situationName = type + "_";
         string imgName = "";
-
-        List<int> spritesToMerge = new List<int>();
-        spritesToMerge.Add(12);
-        //directly adjacent
-        if (!atp[1]) { spritesToMerge.Add(7); } else { spritesToMerge.Add(2); }
-        if (!atp[3]) { spritesToMerge.Add(13); } else { spritesToMerge.Add(14); }
-        if (!atp[5]) { spritesToMerge.Add(17); } else { spritesToMerge.Add(22); }
-        if (!atp[7]) { spritesToMerge.Add(11); } else { spritesToMerge.Add(10); }
-        //corners
-        if (atp[7] && atp[1] && !atp[0]) { spritesToMerge.Add(0); }
-        if (atp[7] && !atp[1]) { spritesToMerge.Add(5); }
-        if (!atp[7] && atp[1]) { spritesToMerge.Add(1); }
-        if (!atp[7] && !atp[1]) { spritesToMerge.Add(6); }
-        if (atp[1] && atp[3] && !atp[2]) { spritesToMerge.Add(4); }
-        if (atp[1] && !atp[3]) { spritesToMerge.Add(3); }
-        if (!atp[1] && atp[3]) { spritesToMerge.Add(9); }
-        if (!atp[1] && !atp[3]) { spritesToMerge.Add(8); }
-        if (atp[3] && atp[5] && !atp[4]) { spritesToMerge.Add(24); }
-        if (atp[3] && !atp[5]) { spritesToMerge.Add(19); }
-        if (!atp[3] && atp[5]) { spritesToMerge.Add(23); }
-        if (!atp[3] && !atp[5]) { spritesToMerge.Add(18); }
-        if (atp[5] && atp[7] && !atp[6]) { spritesToMerge.Add(20); }
-        if (atp[5] && !atp[7]) { spritesToMerge.Add(21); }
-        if (!atp[5] && atp[7]) { spritesToMerge.Add(15); }
-        if (!atp[5] && !atp[7]) { spritesToMerge.Add(16); }
-        //Full Corners
-        if (atp[7] && atp[1] && atp[0]) { spritesToMerge.Add(25); }
-        if (atp[1] && atp[3] && atp[2]) { spritesToMerge.Add(26); }
-        if (atp[3] && atp[5] && atp[4]) { spritesToMerge.Add(27); }
-        if (atp[5] && atp[7] && atp[6]) { spritesToMerge.Add(28); }
-
         foreach (int b in spritesToMerge)
         {
-            situationName += b+",";
             imgName += b + "-";
         }
+        MergeSprites(spritesToMerge, imgName);
 
-        MergeSprites(spritesToMerge, situationName,imgName);
+        //List<int> spritesToMerge = new List<int>();
+        //spritesToMerge.Add(12);
+        //directly adjacent
+        //if (!atp[1]) { spritesToMerge.Add(7); } else { spritesToMerge.Add(2); }
+        //if (!atp[3]) { spritesToMerge.Add(13); } else { spritesToMerge.Add(14); }
+        //if (!atp[5]) { spritesToMerge.Add(17); } else { spritesToMerge.Add(22); }
+        //if (!atp[7]) { spritesToMerge.Add(11); } else { spritesToMerge.Add(10); }
+        ////corners
+        //if (atp[7] && atp[1] && !atp[0]) { spritesToMerge.Add(0); }
+        //if (atp[7] && !atp[1]) { spritesToMerge.Add(5); }
+        //if (!atp[7] && atp[1]) { spritesToMerge.Add(1); }
+        //if (!atp[7] && !atp[1]) { spritesToMerge.Add(6); }
+        //if (atp[1] && atp[3] && !atp[2]) { spritesToMerge.Add(4); }
+        //if (atp[1] && !atp[3]) { spritesToMerge.Add(3); }
+        //if (!atp[1] && atp[3]) { spritesToMerge.Add(9); }
+        //if (!atp[1] && !atp[3]) { spritesToMerge.Add(8); }
+        //if (atp[3] && atp[5] && !atp[4]) { spritesToMerge.Add(24); }
+        //if (atp[3] && !atp[5]) { spritesToMerge.Add(19); }
+        //if (!atp[3] && atp[5]) { spritesToMerge.Add(23); }
+        //if (!atp[3] && !atp[5]) { spritesToMerge.Add(18); }
+        //if (atp[5] && atp[7] && !atp[6]) { spritesToMerge.Add(20); }
+        //if (atp[5] && !atp[7]) { spritesToMerge.Add(21); }
+        //if (!atp[5] && atp[7]) { spritesToMerge.Add(15); }
+        //if (!atp[5] && !atp[7]) { spritesToMerge.Add(16); }
+        ////Full Corners
+        //if (atp[7] && atp[1] && atp[0]) { spritesToMerge.Add(25); }
+        //if (atp[1] && atp[3] && atp[2]) { spritesToMerge.Add(26); }
+        //if (atp[3] && atp[5] && atp[4]) { spritesToMerge.Add(27); }
+        //if (atp[5] && atp[7] && atp[6]) { spritesToMerge.Add(28); }
     }
 
-    void MergeSprites(List<int> spriteIndexes, string situationName, string imgName)
+    void MergeSprites(int[] spriteIndexes, string imgName)
     {
         Texture2D tex = new Texture2D((int)sprites[0].rect.width, (int)sprites[0].rect.height,TextureFormat.ARGB32,false);
         tex.filterMode = FilterMode.Point;
