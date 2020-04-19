@@ -2159,6 +2159,7 @@ MonoBehaviour:
   generalPopupPrefab: {fileID: 2386094422850664361, guid: 6bd2eda88c4038a46b635ff2892131c3,
     type: 3}
   loadingOverlay: {fileID: 1291118582}
+  buttonDownSound: {fileID: 0}
 --- !u!114 &1585236473
 MonoBehaviour:
   m_ObjectHideFlags: 0

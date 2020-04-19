@@ -1,16 +1,17 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.UI;
 
+[RequireComponent(typeof(AudioSource))]
 public class ButtonDip : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPointerExitHandler
 {
+    AudioSource audio;
+
     GameObject[] toDip;
     float dipAmount = 5;
     bool down;
     void Start()
     {
+        audio = GetComponent<AudioSource>();
         toDip = new GameObject[transform.childCount];
         for(int i =0; i < transform.childCount; i++)
         {
@@ -25,6 +26,9 @@ public class ButtonDip : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, 
             g.transform.position -= new Vector3(0, dipAmount);
         }
         down = true;
+
+        audio.clip = GameManager.Instance.buttonDownSound;
+        audio.Play();
     }
 
     public void OnPointerUp(PointerEventData eventData)

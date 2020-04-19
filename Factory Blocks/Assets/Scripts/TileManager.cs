@@ -30,8 +30,11 @@ public class TileManager : MonoBehaviour
     public Level loadedLevel { get; private set; }
     [HideInInspector]
     public bool won = false, playing = true;
+
     public GameWonPopup wonPopup;
     public CoinSlider coins;
+    public AudioSource tileSounds;
+    public AudioClip slideUp, slideRight, slideLeft, slideDown;
 
     void Update()
     {
@@ -260,6 +263,12 @@ public class TileManager : MonoBehaviour
 
             if (moved)
             {
+                if (dir == new Vector2Int(0, 1)) { tileSounds.clip = slideUp; }
+                if (dir == new Vector2Int(0, -1)) { tileSounds.clip = slideDown; }
+                if (dir == new Vector2Int(-1, 0)) { tileSounds.clip = slideLeft; }
+                if (dir == new Vector2Int(1, 0)) { tileSounds.clip = slideRight; }
+                tileSounds.Play();
+
                 moves++;
                 Level t = LevelState("tempStatus");
                 t.realLevelName = loadedLevel.name;

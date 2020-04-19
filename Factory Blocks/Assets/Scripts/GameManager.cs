@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
     public GameObject generalPopupPrefab;
     public LoadingOverlay loadingOverlay;
-
+    public AudioClip buttonDownSound;
     Level tempState;
     BestMoves bestMovesLoadedState;
     public struct LevelLocation
