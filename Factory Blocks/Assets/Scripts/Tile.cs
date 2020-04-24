@@ -37,7 +37,8 @@ public class Tile : MonoBehaviour
     //bool merging = false; //only one merge at once
     //bool flipX = false;
     //bool flipY = false;
-    bool dead = false; 
+    bool dead = false;
+    AudioSource audio;
 
     void Awake()
     {
@@ -54,8 +55,8 @@ public class Tile : MonoBehaviour
         {
             globalLinkGroup.Add(this);
         }
+        audio = gameObject.AddComponent(typeof(AudioSource)) as AudioSource;
     }
-
 
     void Update()
     {
@@ -65,10 +66,12 @@ public class Tile : MonoBehaviour
             transform.position = Vector2.MoveTowards(transform.position, pos, Time.deltaTime * moveSpeed);
             moveSpeed += Time.deltaTime * acceleration;
             Vector2 move = (Vector2)transform.position - tempPos;
-            if (move.SqrMagnitude() < .01f)
+            Vector2 endDist = (Vector2)transform.position - pos;
+            if (endDist.sqrMagnitude < .01f)
             {
-                Vector2 norm = move.normalized;
-                Vector2Int dir = new Vector2Int((int)norm.x, (int)norm.y);
+                audio.PlayOneShot(TileManager.Instance.tileHit, GameManager.Instance.volume);
+                //Vector2 norm = move.normalized;
+                //Vector2Int dir = new Vector2Int((int)norm.x, (int)norm.y);
                 //tm.GetTile(pos + dir).Collision(dir, type);
             }
             lastMove = (Vector2)transform.position - tempPos;
@@ -320,82 +323,8 @@ public class Tile : MonoBehaviour
             imgName += b + "-";
         }
         sr.sprite = Loader.Instance.TileSprite(type, imgName);
-
-        /*CompiledSprite fetched = spriteCache.FirstOrDefault(element => element.situation.Equals(situationName));
-        if (fetched.sprite != null)
-        {
-            sr.sprite = fetched.sprite;
-        }
-        else if(Loader.Instance.FetchTexture(type,imgName) != null)
-        {
-            Texture2D tex = Loader.Instance.FetchTexture(type, imgName);
-            sr.sprite = Sprite.Create(tex, new Rect(0, 0, tex.width, tex.height), new Vector2(.5f, .5f), tex.width);
-            spriteCache.Add(new CompiledSprite
-            {
-                situation = situationName,
-                sprite = sr.sprite
-            });
-        }
-        else
-        {
-            if (!merging)
-            {
-                MergeSprites(spritesToMerge, situationName,imgName);
-            }
-        }*/
     }
 
-    //TODO it saves the old merge not the new one so spamming will leave you with out of date sprites
-    /*void MergeSprites(List<int> spriteIndexes,string situationName,string imgName)
-    {
-        merging = true;
-        Texture2D tex = new Texture2D((int)sprites[0].rect.width, (int)sprites[0].rect.height,TextureFormat.ARGB32,false);
-        tex.filterMode = FilterMode.Point;
-        Color32[] pixels = new Color32[tex.width * tex.height];
-        bool done = false;
-        foreach (int i in spriteIndexes)
-        {
-            done = false;
-            while (!done)
-            {
-                for (int x = 0; x < sprites[i].rect.width; x++)
-                {
-                    for (int y = 0; y < sprites[i].rect.height; y++)
-                    {
-                        int xpos = flipX&&i==12 ? (int)sprites[i].rect.width - x - 1 + (int)sprites[i].rect.x : x + (int)sprites[i].rect.x;
-                        int ypos = flipY&&i==12 ? (int)sprites[i].rect.height - y - 1 + (int)sprites[i].rect.y : y + (int)sprites[i].rect.y;
-
-                        Color32 pixel = sprites[i].texture.GetPixel(xpos, ypos);
-                        if (pixel.a != 0)
-                        {
-                            pixels[x + tex.width * y] = pixel;
-                        }
-                    }
-                }
-                done = true;
-            }
-
-        }
-        done = false;
-        while (!done)
-        {
-            tex.SetPixels32(pixels);
-            tex.Apply();
-            done = true;
-        }
-        string path = "tile" + type + "/" + imgName + ".png";
-        if (Directory.Exists("tile" + type + "/") && !File.Exists(path))
-        {
-            File.WriteAllBytes(path, tex.EncodeToPNG());
-        }
-        sr.sprite = Sprite.Create(tex, new Rect(0, 0, tex.width, tex.height), new Vector2(.5f, .5f), tex.width);
-        spriteCache.Add(new CompiledSprite
-        {
-            situation = situationName,
-            sprite = sr.sprite
-        });
-        merging = false;
-    }*/
     public void RemoveFromGlobal()
     {
         globalLinkGroup.Remove(this);

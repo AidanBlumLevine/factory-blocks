@@ -19,6 +19,9 @@ public class GameManager : MonoBehaviour
     public AudioClip buttonDownSound;
     Level tempState;
     BestMoves bestMovesLoadedState;
+
+    [HideInInspector]
+    public float volume = 1;
     public struct LevelLocation
     {
         public Level level;

@@ -20,6 +20,7 @@ public class TileManager : MonoBehaviour
     }
 
     GameObject[] tilePrefabs;
+    int movedSome;
     public GameObject CrateParticle;
     int width, height, moves;
     List<Tile> tiles = new List<Tile>();
@@ -30,11 +31,10 @@ public class TileManager : MonoBehaviour
     public Level loadedLevel { get; private set; }
     [HideInInspector]
     public bool won = false, playing = true;
-
     public GameWonPopup wonPopup;
     public CoinSlider coins;
     public AudioSource tileSounds;
-    public AudioClip slideUp, slideRight, slideLeft, slideDown;
+    public AudioClip slideUp, slideRight, slideLeft, slideDown, tileHit;
 
     void Update()
     {
@@ -88,6 +88,12 @@ public class TileManager : MonoBehaviour
             }
         }
         lastStill = Still();
+        float moving = 0;
+        foreach(Tile t in tiles)
+        {
+            moving += t.IsStill() ? 0 : 1;
+        }
+        tileSounds.volume = moving/movedSome;
     }
 
     public void Particle(Vector2 pos, Vector2 dir, int type)
@@ -246,18 +252,25 @@ public class TileManager : MonoBehaviour
         if (Still() && !won && playing)
         {
             bool moved = false;
+            movedSome = 0;
             foreach (Tile t in tiles)
             {
                 if (t.type == 2 || t.type == 3)
                 {
-                    if (t.Push(dir)) { moved = true; }
+                    if (t.Push(dir)) {
+                        moved = true;
+                        movedSome++;
+                    }
                 }
             }
             foreach (Tile t in tiles)
             {
                 if (t.type != 2 && t.type != 3)
                 {
-                    if (t.Push(dir)) { moved = true; }
+                    if (t.Push(dir)) {
+                        moved = true;
+                        movedSome++;
+                    }
                 }
             }
 

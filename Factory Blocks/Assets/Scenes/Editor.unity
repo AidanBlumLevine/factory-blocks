@@ -643,7 +643,6 @@ GameObject:
   m_Component:
   - component: {fileID: 313708008}
   - component: {fileID: 313708007}
-  - component: {fileID: 313708006}
   - component: {fileID: 313708009}
   - component: {fileID: 313708010}
   - component: {fileID: 313708011}
@@ -654,14 +653,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &313708006
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 313708005}
-  m_Enabled: 1
 --- !u!20 &313708007
 Camera:
   m_ObjectHideFlags: 0
@@ -759,6 +750,12 @@ MonoBehaviour:
   playing: 1
   wonPopup: {fileID: 0}
   coins: {fileID: 0}
+  tileSounds: {fileID: 0}
+  slideUp: {fileID: 0}
+  slideRight: {fileID: 0}
+  slideLeft: {fileID: 0}
+  slideDown: {fileID: 0}
+  tileHit: {fileID: 0}
 --- !u!114 &313708011
 MonoBehaviour:
   m_ObjectHideFlags: 0
