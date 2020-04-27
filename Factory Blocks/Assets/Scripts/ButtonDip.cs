@@ -18,6 +18,18 @@ public class ButtonDip : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, 
         }
     }
 
+    void Update()
+    {
+        if (Input.touchCount == 0 && down)
+        {
+            foreach (GameObject g in toDip)
+            {
+                g.transform.position += new Vector3(0, dipAmount);
+            }
+            down = false;
+        }
+    }
+
     public void OnPointerDown(PointerEventData eventData)
     {
         foreach (GameObject g in toDip)
@@ -43,14 +55,14 @@ public class ButtonDip : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, 
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        if (down)
-        {
-            foreach (GameObject g in toDip)
-            {
-                g.transform.position += new Vector3(0, dipAmount);
-            }
-            down = false;
-        }
-        EventSystem.current.SetSelectedGameObject(null);
+        //if (down)
+        //{
+        //    foreach (GameObject g in toDip)
+        //    {
+        //        g.transform.position += new Vector3(0, dipAmount);
+        //    }
+        //    down = false;
+        //}
+        //EventSystem.current.SetSelectedGameObject(null);
     }
 }

@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -17,6 +18,8 @@ public class GameManager : MonoBehaviour
     public GameObject generalPopupPrefab;
     public LoadingOverlay loadingOverlay;
     public AudioClip buttonDownSound;
+    public Text fps;
+    float lastTime;
     Level tempState;
     BestMoves bestMovesLoadedState;
 
@@ -39,6 +42,7 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
 
+        Application.targetFrameRate = 60;
         levels = new List<Level>();
         //Load Custom Levels
         customLevels = new List<LevelLocation>();
@@ -193,6 +197,15 @@ public class GameManager : MonoBehaviour
     public void Continue()
     {
         LoadScene(1,TempState());
+    }
+
+    private void Update()
+    {
+        if (fps != null)
+        {
+            fps.text = "" + 1 / (Time.time - lastTime);
+            lastTime = Time.time;
+        }
     }
 
     Level TempState()

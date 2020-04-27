@@ -65,9 +65,9 @@ public class Tile : MonoBehaviour
             Vector2 tempPos = transform.position;
             transform.position = Vector2.MoveTowards(transform.position, pos, Time.deltaTime * moveSpeed);
             moveSpeed += Time.deltaTime * acceleration;
-            Vector2 move = (Vector2)transform.position - tempPos;
+            //Vector2 move = (Vector2)transform.position - tempPos;
             Vector2 endDist = (Vector2)transform.position - pos;
-            if (endDist.sqrMagnitude < .01f)
+            if (endDist.sqrMagnitude < .01f && isMaster)
             {
                 audio.PlayOneShot(TileManager.Instance.tileHit, GameManager.Instance.volume);
                 //Vector2 norm = move.normalized;
