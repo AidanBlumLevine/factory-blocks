@@ -1,6 +1,6 @@
 ﻿[System.Serializable]
 public class BestMoves
-{
+{    
     public LevelNum[] levels;
     [System.Serializable]
     public struct LevelNum
